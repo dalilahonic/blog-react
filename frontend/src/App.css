@@ -1,0 +1,18 @@
+div.main {
+  background-color: #29272a;
+}
+
+.section .heading h3 {
+  color: white;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+div.section {
+  margin: auto;
+  width: 90%;
+}
