@@ -7,7 +7,7 @@ function App() {
       <div className='main'>
         <div className='section'>
           <div className='heading'>
-            <h3>From my blog</h3>
+            <h3>From my bl.og</h3>
           </div>
           <div className='cards'>
             <div className='card'></div>
