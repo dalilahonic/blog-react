@@ -1,19 +1,10 @@
 import './App.css';
-// import Button from '@mui/material/Button';
+import HeaderMain from './components/Main Page/HeaderMain';
 
 function App() {
   return (
     <>
-      <div className='main'>
-        <div className='section'>
-          <div className='heading'>
-            <h3>From my bl.og</h3>
-          </div>
-          <div className='cards'>
-            <div className='card'></div>
-          </div>
-        </div>
-      </div>
+      <HeaderMain />
     </>
   );
 }
