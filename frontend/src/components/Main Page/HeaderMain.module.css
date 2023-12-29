@@ -23,8 +23,10 @@ nav div.rightNavigation {
 }
 
 div.rightNavigation ul {
-  transform: translateX(40%);
+  transform: translateX(20%);
+  height: 50px;
   display: flex;
+  align-items: center;
   gap: 10%;
 }
 
@@ -59,4 +61,20 @@ div.rightContainer {
   height: 100%;
   width: 68%;
   background-color: var(--mint-color);
+}
+
+div.button {
+  height: 70%;
+  width: 310px;
+  background-color: var(--color-btn);
+  border-radius: 220px;
+  border: 2px solid white;
+  position: relative;
+}
+
+div.button::after {
+  position: absolute;
+  content: '';
+  width: 100px;
+  height: 200px;
 }
