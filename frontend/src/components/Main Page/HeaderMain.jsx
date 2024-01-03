@@ -1,21 +1,24 @@
 import { useState } from 'react';
-import classes from './HeaderMain.module.css';
+import styles from './HeaderMain.module.css';
 import { Link } from 'react-router-dom';
+import SliderButton from './SliderButton';
 
 export default function HeaderMain() {
   const [darkTheme, setDarkTheme] = useState(true);
 
-  function changeTheme() {}
-
   return (
-    <div className={classes.main}>
+    <div className={styles.main}>
       <nav>
         <div
-          className={`${classes.leftNavigation} ${
-            darkTheme ? classes.dark : classes.light
+          className={`${styles.leftNavigation} ${
+            darkTheme ? styles.dark : styles.light
           }`}
         ></div>
-        <div className={classes.rightNavigation}>
+        <div
+          className={`${styles.rightNavigation} ${
+            darkTheme ? styles.dark : styles.light
+          }`}
+        >
           <ul>
             <Link to='/writing'>
               <li>writing</li>
@@ -23,18 +26,27 @@ export default function HeaderMain() {
             <Link to='/speaking'>
               <li>speaking</li>
             </Link>
-            <li>workshop</li>
-            <li>playing</li>
-            <div
-              onClick={changeTheme}
-              className={classes.button}
-            ></div>
+            <Link>
+              <li>workshop</li>
+            </Link>
+            <Link>
+              <li>playing</li>
+            </Link>
+            <SliderButton setDarkTheme={setDarkTheme} />
           </ul>
         </div>
       </nav>
-      <div className={classes.mainContainer}>
-        <div className={classes.leftContainer}></div>
-        <div className={classes.rightContainer}></div>
+      <div className={styles.mainContainer}>
+        <div
+          className={`${styles.leftContainer} ${
+            darkTheme ? styles.dark : styles.light
+          }`}
+        ></div>
+        <div
+          className={`${styles.rightContainer} ${
+            darkTheme ? styles.dark : styles.light
+          }`}
+        ></div>
       </div>
     </div>
   );

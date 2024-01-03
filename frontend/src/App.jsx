@@ -1,5 +1,4 @@
 import './App.css';
-import HeaderMain from './components/Main Page/HeaderMain';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -7,11 +6,12 @@ import {
 import Writing from './pages/Writing';
 import Speaking from './pages/Speaking';
 import Post from './pages/Post';
+import Home from './pages/Home';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HeaderMain />,
+    element: <Home />,
   },
   { path: '/writing', element: <Writing /> },
   { path: '/speaking', element: <Speaking /> },
