@@ -1,10 +1,6 @@
-div.main {
-  height: 100vh;
-  width: 100%;
-}
-
-div.main nav {
+nav {
   height: 10%;
+  display: flex;
 }
 
 nav div.leftNavigation {
@@ -39,44 +35,16 @@ div.rightNavigation ul {
   color: var(--color-highlight);
 }
 
-div.mainContainer,
-div.main nav {
-  display: flex;
-}
-
-div.mainContainer {
-  height: 90%;
-}
-
-div.leftContainer {
-  width: 32%;
-  height: 100%;
-}
-
-div.rightContainer {
-  height: 100%;
-  width: 68%;
-}
-
 .rightNavigation a {
   text-decoration: none;
 }
 
-/* .................THEMES....................... */
+/*.................................THEMES  */
 
 .leftNavigation.dark {
   background-color: var(--main-color);
 }
-
-.leftContainer.dark {
-  background-color: var(--main-color);
-}
-
 .leftNavigation.light {
-  background-color: white;
-}
-
-.leftContainer.leftNavigation.light {
   background-color: white;
 }
 
@@ -87,15 +55,6 @@ div.rightContainer {
 .rightNavigation.light {
   background-color: var(--mint);
 }
-
-.rightContainer.dark {
-  background-color: var(--purple);
-}
-
-.rightContainer.light {
-  background-color: var(--mint);
-}
-
 .rightNavigation.dark a {
   color: white;
 }

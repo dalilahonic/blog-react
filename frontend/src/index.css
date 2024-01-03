@@ -7,6 +7,8 @@
   --color-highlight: #b1b1d8;
   --color-dark-no-swop: #404040;
   --color-btn: #adadb3;
+  --color-lilac: #4c3a69;
+  --color-lilac-2: #ae8fdb;
 }
 
 * {
@@ -19,4 +21,8 @@
 li:hover,
 button:hover {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }

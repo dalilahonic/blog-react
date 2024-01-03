@@ -1,0 +1,168 @@
+div.writing {
+  min-height: 100vh;
+  height: 130vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.posts {
+  height: 70%;
+  width: 64%;
+  margin: auto;
+}
+
+div.posts h1 {
+  font-size: 56px;
+  margin-block: 22px;
+  letter-spacing: 2px;
+}
+
+div.post {
+  width: 432px;
+
+  border-radius: 20px;
+  position: relative;
+}
+
+div.post:hover {
+  cursor: grab;
+}
+
+div.post .divider {
+  height: 36px;
+  width: 100%;
+}
+
+div.divider span {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 25%;
+}
+
+div.divider span img {
+  width: 100%;
+  height: 50%;
+}
+
+div.postBody {
+  padding: 20px;
+}
+
+div.postBody > a {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: 1px;
+  margin-block: 13px;
+  line-height: 30px;
+  position: relative;
+}
+
+div.postBody > a:hover::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  background-color: red;
+  opacity: 0.2;
+  top: 23%;
+}
+
+div.postBody footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 13px;
+}
+
+div.postBody footer a {
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+div.postBody footer a:nth-child(2) {
+  position: relative;
+  padding-right: 1.4rem;
+}
+
+div.postBody footer a:nth-child(2)::after {
+  content: '';
+  position: absolute;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10' aria-hidden='true'%3E%3Cpath fill='%23404040' d='M1 4h11.59l-2.3-2.29A1 1 0 0111.71.29l4 4a1 1 0 010 1.41l-4 4a1 1 0 01-1.41-1.41L12.59 6H1a1 1 0 010-2z'/%3E%3C/svg%3E");
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 1rem;
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+  transition: ease-out 0.2s;
+}
+
+div.postBody footer a:nth-child(2):hover::after {
+  transform: translateX(40%);
+}
+
+div.writing.dark {
+  background-color: var(--color-lilac);
+}
+
+div.writing.light {
+  background-color: var(--color-lilac-2);
+}
+
+/* ............................................................... */
+
+div.posts.dark h1 {
+  color: white;
+}
+
+div.posts.light h1 {
+  color: #404040;
+}
+
+div.posts.dark div.post {
+  border: 1px solid white;
+  color: white;
+}
+
+div.posts.dark div.divider {
+  border-bottom: 2.6px solid white;
+}
+
+.dark div.postBody > a {
+  color: white;
+}
+
+div.posts.light div.post {
+  border: 1px solid #404040;
+  background-color: white;
+}
+
+div.posts.light div a {
+  color: #404040;
+}
+
+div.posts.light div.divider {
+  border-bottom: 2.6px solid #404040;
+}
+
+.dark div.divider span img {
+  filter: invert(1) brightness(1.3);
+}
+
+.dark footer a:first-child:hover {
+  border-bottom: 1px solid #774069;
+}
+
+.light footer a:first-child:hover {
+  border-bottom: 1px solid #f4d1cf;
+}
+
+.dark footer a:nth-child(2)::after {
+  filter: invert(1);
+}

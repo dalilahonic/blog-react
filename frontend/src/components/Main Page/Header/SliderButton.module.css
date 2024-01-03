@@ -1,0 +1,60 @@
+div.button {
+  height: 70%;
+  width: 290px;
+  background-color: var(--color-btn);
+  border-radius: 220px;
+  border: 2px solid white;
+  position: relative;
+}
+
+div.button:hover {
+  cursor: pointer;
+}
+
+div.button::after {
+  position: absolute;
+  content: '';
+  background-color: white;
+  border: 0.1rem solid grey;
+  top: 50%;
+  right: 3%;
+  height: 1.6rem;
+  width: 1.6rem;
+  border-radius: 50%;
+  animation: leftToRight 0.2s forwards ease-in-out;
+}
+
+div.button.on:after {
+  animation: rightToLeft 0.2s forwards ease-in-out;
+}
+
+@keyframes rightToLeft {
+  from {
+    transform: translate(0%, -50%);
+
+    background-image: url('../../../assets/moon.svg');
+  }
+
+  to {
+    transform: translate(-70%, -50%) rotate(180deg);
+    background: linear-gradient(
+      130deg,
+      #ffc851 0,
+      #fff0a4 45%,
+      #ffc851 45%,
+      #fcb045 100%
+    );
+    border: 0.1rem solid #ff9b04;
+  }
+}
+
+@keyframes leftToRight {
+  0% {
+    transform: translate(-70%, -50%);
+  }
+
+  to {
+    transform: translate(0%, -50%) rotate(-180deg);
+    background-image: url('../../../assets/moon.svg');
+  }
+}

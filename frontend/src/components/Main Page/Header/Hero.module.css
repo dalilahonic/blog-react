@@ -1,0 +1,35 @@
+div.mainContainer {
+  display: flex;
+}
+
+div.mainContainer {
+  height: 90%;
+}
+
+div.leftContainer {
+  width: 32%;
+  height: 100%;
+}
+
+div.rightContainer {
+  height: 100%;
+  width: 68%;
+}
+
+/* .................THEMES....................... */
+
+.leftContainer.dark {
+  background-color: var(--main-color);
+}
+
+.leftContainer.leftNavigation.light {
+  background-color: white;
+}
+
+.rightContainer.dark {
+  background-color: var(--purple);
+}
+
+.rightContainer.light {
+  background-color: var(--mint);
+}
