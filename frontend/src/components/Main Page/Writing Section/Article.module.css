@@ -1,0 +1,81 @@
+div.main {
+  background-color: var(--main-color);
+}
+
+div.header {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.logoDiv {
+  margin: auto;
+  width: 756px;
+  height: 301px;
+  box-shadow: 1rem 1rem 0 0 white;
+  border: 3px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.logoInner {
+  height: 60%;
+  width: 90%;
+  display: flex;
+}
+
+div.logoHeading {
+  height: 100%;
+  width: 60%;
+}
+
+div.logoHeading h1 {
+  font-size: 40px;
+  color: white;
+  line-height: 1.2;
+}
+
+div.logoSummary {
+  height: 100%;
+  width: 40%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20%;
+  position: relative;
+}
+
+div.logoSummary::before {
+  position: absolute;
+  content: '';
+  width: 4rem;
+  height: 170%;
+  left: 0;
+  top: 0;
+  background-color: var(--color-lilac);
+  border: 2px solid white;
+}
+
+div.logoSummary div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  font-size: 20px;
+  z-index: 20;
+}
+
+div.logoSummary div img {
+  width: 32px;
+  aspect-ratio: 1/1;
+  filter: invert(1);
+}
+
+div.logoSummary div p {
+  padding-left: 25px;
+  font-weight: 500;
+}

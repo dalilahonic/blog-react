@@ -1,26 +1,5 @@
-div.writing {
-  min-height: 100vh;
-  height: 130vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-div.posts {
-  height: 70%;
-  width: 64%;
-  margin: auto;
-}
-
-div.posts h1 {
-  font-size: 56px;
-  margin-block: 22px;
-  letter-spacing: 2px;
-}
-/* 
 div.post {
   width: 432px;
-
   border-radius: 20px;
   position: relative;
 }
@@ -39,6 +18,7 @@ div.divider span {
   align-items: center;
   height: 100%;
   width: 25%;
+  padding-inline: 12px;
 }
 
 div.divider span img {
@@ -105,32 +85,14 @@ div.postBody footer a:nth-child(2)::after {
 
 div.postBody footer a:nth-child(2):hover::after {
   transform: translateX(40%);
-} */
-
-div.writing.dark {
-  background-color: var(--color-lilac);
 }
 
-div.writing.light {
-  background-color: var(--color-lilac-2);
-}
-
-/* ............................................................... */
-
-div.posts.dark h1 {
-  color: white;
-}
-
-div.posts.light h1 {
-  color: #404040;
-}
-
-/* div.posts.dark div.post {
+div.dark.post {
   border: 1px solid white;
   color: white;
 }
 
-div.posts.dark div.divider {
+.dark div.divider {
   border-bottom: 2.6px solid white;
 }
 
@@ -138,16 +100,16 @@ div.posts.dark div.divider {
   color: white;
 }
 
-div.posts.light div.post {
+div.post.light {
   border: 1px solid #404040;
   background-color: white;
 }
 
-div.posts.light div a {
+.light div a {
   color: #404040;
 }
 
-div.posts.light div.divider {
+.light div.divider {
   border-bottom: 2.6px solid #404040;
 }
 
@@ -165,4 +127,4 @@ div.posts.light div.divider {
 
 .dark footer a:nth-child(2)::after {
   filter: invert(1);
-} */
+}
