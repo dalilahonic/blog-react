@@ -1,11 +1,29 @@
 div.post {
   width: 432px;
   border-radius: 20px;
-  position: relative;
+  position: absolute;
+}
+
+div.post:first-of-type {
+  left: 0;
+}
+
+div.post:nth-of-type(2) {
+  right: -5%;
+  top: 5%;
+}
+
+div.post:nth-of-type(3) {
+  right: 7%;
+  bottom: 0%;
 }
 
 div.post:hover {
   cursor: grab;
+}
+
+div.post p {
+  line-height: 1.8;
 }
 
 div.post .divider {

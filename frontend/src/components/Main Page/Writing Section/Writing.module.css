@@ -10,6 +10,7 @@ div.posts {
   height: 70%;
   width: 64%;
   margin: auto;
+  position: relative;
 }
 
 div.posts h1 {

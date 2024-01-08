@@ -6,6 +6,10 @@ export default function Writing() {
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
+  const data = useSelector((state) => state.posts)?.slice(
+    0,
+    3
+  );
 
   return (
     <section>
@@ -20,7 +24,17 @@ export default function Writing() {
           }`}
         >
           <h1>Writing.</h1>
-          <Post />
+
+          {data?.map((post, i) => {
+            return (
+              <Post
+                key={i}
+                heading={post.attributes.heading}
+                content={post.attributes.content}
+                tags={post.attributes.tags.tags}
+              />
+            );
+          })}
         </div>
       </div>
     </section>

@@ -3,10 +3,18 @@ import styles from './Post.module.css';
 import { useSelector } from 'react-redux';
 import DotsSvg from '../../../assets/dots.svg';
 
-export default function Post() {
+export default function Post({ heading, content, tags }) {
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
+
+  function getLink(heading) {
+    return heading.split(' ').join('-');
+  }
+
+  function getDescription(content) {
+    return content.split(' ').slice(0, 22).join(' ');
+  }
 
   return (
     <div
@@ -21,16 +29,10 @@ export default function Post() {
         </span>
       </div>
       <div className={styles.postBody}>
-        <Link to='/the-many-ways-to-change-an-svg-fill-on-hover'>
-          The many ways to change an SVG fill on hover
-        </Link>
-        <p>
-          How do you go about adding a colored hover effect
-          to an icon if it’s not an inline SVG? Let’s dive
-          into what’s possible with CSS and SVG filters.
-        </p>
+        <Link to={getLink(heading)}>{heading}</Link>
+        <p>{getDescription(content)}...</p>
         <footer>
-          <Link> CSS tricks</Link>
+          <Link> {tags[0]}</Link>
           <Link>Read post</Link>
         </footer>
       </div>
