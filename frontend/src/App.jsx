@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   { path: '/writing', element: <Writing /> },
   { path: '/speaking', element: <Speaking /> },
   { path: '/speaking/:id', element: <Post /> },
-  { path: ':articleId', element: <Article /> },
+  { path: '/posts/:articleId', element: <Article /> },
 ]);
 
 function App() {
@@ -33,7 +33,6 @@ function App() {
         dispatch(postsActions.addData(data.data));
       });
   }, [dispatch]);
-
 
   return <RouterProvider router={router} />;
 }

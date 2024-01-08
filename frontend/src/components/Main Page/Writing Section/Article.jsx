@@ -3,7 +3,7 @@ import intro from '../../../assets/intro.svg';
 import calendar from '../../../assets/calendar.svg';
 import time from '../../../assets/time.svg';
 
-export default function Article() {
+export default function Article({ heading, content }) {
   return (
     <div className={styles.main}>
       <div className={styles.header}>

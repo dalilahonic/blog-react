@@ -1,0 +1,59 @@
+div.visitButton {
+  position: absolute;
+  font-size: 20px;
+  bottom: 10%;
+  left: 12%;
+  width: 180px;
+  height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+@keyframes darkAnimation {
+  from {
+    transform: translate(0);
+    box-shadow: 5px 5px white;
+  }
+  to {
+    transform: translate(7px, 7px);
+    box-shadow: 0px 0px;
+  }
+}
+
+@keyframes lightAnimation {
+  from {
+    transform: translate(0);
+    box-shadow: 5px 5px #404040;
+  }
+  to {
+    transform: translate(7px, 7px);
+    box-shadow: 0px 0px;
+  }
+}
+
+div.visitButton.dark:hover {
+  animation: darkAnimation 0.2s forwards;
+}
+
+div.visitButton.light:hover {
+  animation: lightAnimation 0.2s forwards;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.visitButton.dark {
+  box-shadow: 5px 5px white;
+  border: 2px solid white;
+}
+
+.light.visitButton {
+  box-shadow: 5px 5px #404040;
+  border: 2px solid #404040;
+  background-color: white;
+  color: #404040;
+}

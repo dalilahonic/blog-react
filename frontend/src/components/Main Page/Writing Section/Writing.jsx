@@ -1,6 +1,7 @@
 import styles from './Writing.module.css';
 import { useSelector } from 'react-redux';
 import Post from './Post';
+import VisitButton from './VisitButton';
 
 export default function Writing() {
   const darkTheme = useSelector(
@@ -35,6 +36,7 @@ export default function Writing() {
               />
             );
           })}
+          <VisitButton />
         </div>
       </div>
     </section>

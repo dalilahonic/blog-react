@@ -123,8 +123,8 @@ div.post.light {
   background-color: white;
 }
 
-.light div a {
-  color: #404040;
+.light div.postBody a {
+  color: #404040 !important;
 }
 
 .light div.divider {
