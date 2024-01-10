@@ -1,0 +1,11 @@
+div.mainSpeaking {
+  height: 270vh;
+}
+
+div.dark.mainSpeaking {
+  background-color: var(--main-color);
+}
+
+div.light.mainSpeaking {
+  background-color: var(--color-sherbet);
+}

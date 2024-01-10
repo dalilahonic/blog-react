@@ -1,0 +1,14 @@
+div.content {
+  width: 50%;
+  margin: auto;
+  line-height: 1.8;
+  font-size: 20px;
+}
+
+div.content.dark p {
+  color: whtite !important ;
+}
+
+div.content.light p {
+  color: var(--color-dark-no-swop) !important;
+}

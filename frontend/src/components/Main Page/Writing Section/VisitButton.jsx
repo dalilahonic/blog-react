@@ -8,8 +8,6 @@ export default function VisitButton() {
     (state) => state.theme.darkTheme
   );
 
-  console.log(darkTheme);
-
   return (
     <Link>
       <div

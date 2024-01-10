@@ -3,7 +3,7 @@ import styles from './Navigation.module.css';
 import { Link } from 'react-router-dom';
 import SliderButton from '../Header/SliderButton';
 
-export default function Navigation() {
+export default function Navigation({ classN }) {
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
@@ -12,13 +12,13 @@ export default function Navigation() {
     <nav>
       <div
         className={`${styles.leftNavigation} ${
-          darkTheme ? styles.dark : styles.light
-        }`}
+          styles[classN]
+        } ${darkTheme ? styles.dark : styles.light}`}
       ></div>
       <div
         className={`${styles.rightNavigation} ${
-          darkTheme ? styles.dark : styles.light
-        }`}
+          styles[classN]
+        } ${darkTheme ? styles.dark : styles.light}`}
       >
         <ul>
           <Link to='/writing'>

@@ -4,16 +4,16 @@ div.post {
   position: absolute;
 }
 
-div.post:first-of-type {
+a.post:first-of-type div {
   left: 0;
 }
 
-div.post:nth-of-type(2) {
+a.post:nth-of-type(2) div {
   right: -5%;
   top: 5%;
 }
 
-div.post:nth-of-type(3) {
+a.post:nth-of-type(3) div {
   right: 7%;
   bottom: 0%;
 }
@@ -145,4 +145,8 @@ div.post.light {
 
 .dark footer a:nth-child(2)::after {
   filter: invert(1);
+}
+
+.light div.postBody p {
+  color: var(--color-dark-no-swop);
 }

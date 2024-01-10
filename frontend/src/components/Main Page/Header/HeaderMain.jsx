@@ -5,7 +5,7 @@ import Hero from './Hero';
 export default function HeaderMain() {
   return (
     <div className={styles.main}>
-      <Navigation />
+      <Navigation classN='home' />
       <Hero />
     </div>
   );

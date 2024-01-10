@@ -1,0 +1,137 @@
+div.header {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.logoDiv {
+  margin: auto;
+  width: 756px;
+  height: 301px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 100;
+}
+
+div.logoDiv::before {
+  position: absolute;
+  content: '';
+  background-image: url('../../assets//dots-background.svg');
+  background-repeat: no-repeat;
+  z-index: -1;
+  top: -20%;
+  left: -20%;
+  width: 343px;
+  height: 250px;
+}
+
+div.logoInner {
+  height: 60%;
+  width: 90%;
+  display: flex;
+}
+
+div.logoHeading {
+  height: 100%;
+  width: 60%;
+}
+
+div.logoHeading h1 {
+  font-size: 40px;
+  line-height: 1.2;
+}
+
+div.logoSummary {
+  height: 100%;
+  width: 40%;
+  padding-top: 20px;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20%;
+  position: relative;
+  z-index: 2324;
+}
+
+div.logoSummary::before {
+  position: absolute;
+  content: '';
+  width: 4rem;
+  height: 170%;
+  left: 0;
+  top: 0;
+}
+
+div.logoSummary div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 20px;
+  z-index: 20;
+}
+
+div.logoSummary div img {
+  width: 2rem;
+  aspect-ratio: 1/1;
+}
+
+div.logoSummary div p:first-of-type {
+  padding-left: 32px;
+  font-weight: 500;
+}
+
+/* .................... */
+
+.dark div.logoDiv {
+  box-shadow: 1rem 1rem 0 0 white;
+  border: 3px solid white;
+}
+
+.light div.logoDiv {
+  box-shadow: 1rem 1rem 0 0 var(--color-dark-no-swop);
+  border: 3px solid var(--color-dark-no-swop);
+}
+
+.dark div.logoInner h1 {
+  color: white;
+}
+
+.light div.logoInner h1 {
+  color: var(--color-dark-no-swop);
+}
+
+.dark div.logoSummary::before {
+  border: 2px solid white;
+  background-color: var(--color-lilac);
+}
+
+.light div.logoSummary::before {
+  border: 2px solid var(--color-dark-no-swop);
+  background-color: var(--color-lilac-2);
+}
+
+.dark div.logoSummary div {
+  color: white;
+}
+
+.light div.logoSummary div {
+  color: var(--color-dark-no-swop);
+}
+
+.dark div.logoSummary div img {
+  filter: invert(1);
+}
+
+.light div.logoSummary div img {
+  color: var(--color-dark-no-swop);
+  opacity: 0.6;
+}
+
+.dark div.logoDiv::before {
+  filter: invert(1);
+}

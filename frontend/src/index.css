@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Pacifico:wght@400;500&display=swap');
 
 :root {
   --main-color: #29272a;
@@ -9,6 +9,7 @@
   --color-btn: #adadb3;
   --color-lilac: #4c3a69;
   --color-lilac-2: #ae8fdb;
+  --color-sherbet: #fef8b4;
 }
 
 * {

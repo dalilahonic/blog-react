@@ -3,13 +3,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
-import Writing from './pages/Writing';
-import Speaking from './pages/Speaking';
-import Post from './pages/Post';
 import Home from './pages/Home';
-import Article from './components/Main Page/Writing Section/Article';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import Article from './pages/Article';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { postsActions } from './store';
 
 const router = createBrowserRouter([
@@ -17,9 +14,6 @@ const router = createBrowserRouter([
     path: '/',
     element: <Home />,
   },
-  { path: '/writing', element: <Writing /> },
-  { path: '/speaking', element: <Speaking /> },
-  { path: '/speaking/:id', element: <Post /> },
   { path: '/posts/:articleId', element: <Article /> },
 ]);
 

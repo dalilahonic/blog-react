@@ -3,17 +3,49 @@ div.mainContainer {
 }
 
 div.mainContainer {
-  height: 90%;
+  height: 87%;
 }
 
 div.leftContainer {
   width: 32%;
   height: 100%;
+  position: relative;
+}
+
+div.leftContainer img {
+  position: absolute;
+  width: 650px;
+  height: 100vh;
+  right: -59.5%;
+  top: -15%;
+  filter: brightness(90%) saturate(90%);
 }
 
 div.rightContainer {
   height: 100%;
   width: 68%;
+}
+
+.rightContent {
+  width: 100%;
+  padding-left: 28%;
+  margin: auto;
+  height: 100%;
+  padding-top: 3%;
+  padding-right: 5%;
+}
+
+.rightContent p:first-of-type {
+  font-size: 22px;
+  transform: rotate(-5deg);
+  transform-origin: bottom left;
+  font-family: Pacifico;
+}
+
+.rightContainer p {
+  font-size: 63px;
+  font-weight: 700;
+  line-height: 75px;
 }
 
 /* .................THEMES....................... */
@@ -32,4 +64,12 @@ div.rightContainer {
 
 .rightContainer.light {
   background-color: var(--mint);
+}
+
+.dark .rightContent {
+  color: white;
+}
+
+.light .rightContent {
+  color: var(--color-dark-no-swop);
 }
