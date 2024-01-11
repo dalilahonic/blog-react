@@ -1,12 +1,8 @@
-div.mainSpeaking {
-  height: 270vh;
-}
-
 div.wrapper {
   width: 88%;
-  height: 100vh;
   margin: auto;
   padding-inline: 10%;
+  padding-bottom: 70px;
 }
 
 div.speakingIntro {
@@ -23,6 +19,7 @@ div.speakingText h2 {
   font-size: 60px;
   margin-bottom: 1.5rem;
   margin-top: 3rem;
+  font-weight: 900;
 }
 
 div.speakingText p {
@@ -35,6 +32,7 @@ div.speakingText p {
 div.speakingText a {
   text-decoration: underline;
   font-size: 17px;
+  font-weight: 700;
 }
 
 div.speakingPhoto {
@@ -55,9 +53,6 @@ div.speakingPhoto::before {
   left: 18%;
   width: 165px;
   height: 34px;
-  background-color: var(--color-dark);
-  border: 2px solid white;
-  box-shadow: 0.3rem 0.3rem white;
 }
 
 div.speakingPhoto img {
@@ -65,46 +60,13 @@ div.speakingPhoto img {
   height: 246px;
   object-fit: cover;
   border: 2px solid white;
-  box-shadow: 0.5rem 0.5rem white;
 }
 
 div.speakingTalks {
   padding-top: 170px;
-}
-
-div.speakingTalks p {
-  display: block;
-}
-
-div.card {
   display: flex;
-}
-
-div.card div:first-of-type p {
-  transform: rotate(-5deg);
-  font-family: Pacifico;
-  transform-origin: bottom left;
-  font-size: 18px;
-}
-
-div.card h2 {
-  font-size: 30px;
-  margin-bottom: 20px;
-}
-
-div.card p {
-  font-size: 17px;
-  line-height: 1.8;
-  margin-block: 10px;
-}
-
-div.divider {
-  width: 26%;
-  height: 2px;
-  background-color: white;
-  margin-top: 20px;
-  margin-left: 100px;
-  margin-right: 20px;
+  flex-direction: column;
+  gap: 40px;
 }
 
 div.dark.mainSpeaking {
@@ -120,5 +82,30 @@ div.light.mainSpeaking {
 }
 
 .light {
-  color: black;
+  color: #404040;
+}
+
+.light a {
+  color: #2c2a32;
+}
+
+.dark div.speakingPhoto img {
+  box-shadow: 0.5rem 0.5rem white;
+}
+
+.light div.speakingPhoto img {
+  box-shadow: 0.5rem 0.5rem var(--color-dark-no-swop);
+}
+
+.dark div.speakingPhoto::before {
+  background-color: var(--color-dark);
+  box-shadow: 0.3rem 0.3rem white;
+  border: 2px solid white;
+}
+
+.light div.speakingPhoto::before {
+  background-color: white;
+  box-shadow: 0.3rem 0.3rem var(--color-dark-no-swop);
+  color: var(--color-dark-no-swop);
+  border: 2px solid black;
 }

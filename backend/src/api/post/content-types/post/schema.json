@@ -20,6 +20,21 @@
     },
     "tags": {
       "type": "json"
+    },
+    "fromElsewhere": {
+      "type": "boolean"
+    },
+    "from": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "link": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
     }
   }
 }

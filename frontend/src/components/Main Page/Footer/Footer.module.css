@@ -1,0 +1,69 @@
+div.footer {
+  height: 100vh;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.contact {
+  width: 86%;
+  height: 80%;
+  display: flex;
+}
+
+div.contactLeft {
+  width: 41%;
+  padding-top: 5.8%;
+  padding-left: 8%;
+}
+
+div.contactLeft h1 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+div.contactLeft p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+div.contactRight {
+  width: 59%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.contactRight img {
+  width: 80%;
+  max-width: 800px;
+}
+
+div.footer.dark {
+  background-color: var(--purple);
+}
+
+div.footer.light {
+  background-color: var(--mint);
+}
+
+.dark div.contact {
+  background-color: var(--main-color);
+}
+
+.light div.contact {
+  background-color: white;
+}
+
+.dark .contactLeft {
+  color: white;
+}
+
+.light .contactLeft {
+  color: var(--color-dark-no-swop);
+}

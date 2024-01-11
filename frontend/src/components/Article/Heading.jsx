@@ -11,7 +11,7 @@ export default function Heading() {
     (state) => state.theme.darkTheme
   );
   const { articleId } = useParams();
-  const heading = articleId.split('-').join(' ');
+  const heading = articleId?.split('-').join(' ');
 
   const target = data?.find(
     (el) => el.attributes.heading.toLowerCase() === heading

@@ -1,0 +1,12 @@
+div.section {
+  width: 84%;
+  margin: auto;
+}
+
+.dark {
+  color: white;
+}
+
+.light {
+  color: black      ;
+}

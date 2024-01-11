@@ -10,6 +10,7 @@ div.leftContainer {
   width: 32%;
   height: 100%;
   position: relative;
+  background-color: white;
 }
 
 div.leftContainer img {

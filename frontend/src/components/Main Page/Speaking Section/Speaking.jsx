@@ -2,11 +2,17 @@ import { Link } from 'react-router-dom';
 import styles from './Speaking.module.css';
 import { useSelector } from 'react-redux';
 import speaker from '../../../assets/speaker.jpg';
+import CardSpeaking from './CardSpeaking';
 
 export default function Speaking() {
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
+  const speakingCards = useSelector(
+    (state) => state.speaking
+  );
+
+  console.log(speakingCards);
 
   return (
     <div
@@ -38,29 +44,16 @@ export default function Speaking() {
         </div>
 
         <div className={styles.speakingTalks}>
-          <div className={styles.card}>
-            <div>
-              <p>Workshop</p>
-            </div>
-            <div className={styles.divider}></div>
-            <div>
-              <Link>
-                <h2>Getting started with svg animations</h2>
-                <p>
-                  Animation is one of the best ways to bring
-                  brand personality and character to an
-                  online experience, but in the busy world
-                  of front-end development, it can often be
-                  overlooked.
-                </p>
-                <p>
-                  In this workshop we cover everything you
-                  need to know to get started with, and
-                  master SVG animation.
-                </p>
-              </Link>
-            </div>
-          </div>
+          {speakingCards?.map((card) => {
+            return (
+              <CardSpeaking
+                key={card.id}
+                heading={card.attributes.heading}
+                description={card.attributes.description}
+                type={card.attributes.type}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

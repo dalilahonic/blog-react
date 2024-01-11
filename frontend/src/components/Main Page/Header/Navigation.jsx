@@ -21,7 +21,7 @@ export default function Navigation({ classN }) {
         } ${darkTheme ? styles.dark : styles.light}`}
       >
         <ul>
-          <Link to='/writing'>
+          <Link to='/posts'>
             <li>writing</li>
           </Link>
           <Link to='/speaking'>

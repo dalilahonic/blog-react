@@ -1,0 +1,46 @@
+div.card {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+div.type {
+  width: 20%;
+}
+
+div.type p {
+  transform: rotate(-5deg);
+  font-family: Pacifico;
+  transform-origin: bottom left;
+  font-size: 18px;
+}
+
+div.card h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+div.card p {
+  font-size: 17px;
+  line-height: 1.8;
+  margin-block: 10px;
+}
+
+div.divider {
+  width: 10%;
+  height: 2px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+div.content {
+  width: 70%;
+}
+
+.dark div.divider {
+  background-color: white;
+}
+
+.light div.divider {
+  background-color: var(--color-dark-no-swop);
+}

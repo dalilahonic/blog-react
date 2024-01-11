@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import styles from './Hero.module.css';
-import comp from '../../../assets/comp.svg';
+import compDark from '../../../assets/compDark.svg';
+import compLight from '../../../assets/compLight.svg';
 
 export default function Hero() {
   const darkTheme = useSelector(
@@ -13,7 +14,7 @@ export default function Hero() {
           darkTheme ? styles.dark : styles.light
         }`}
       >
-        <img src={comp} />
+        <img src={darkTheme ? compDark : compLight} />
       </div>
       <div
         className={`${styles.rightContainer} ${

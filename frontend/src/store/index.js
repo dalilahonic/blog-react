@@ -25,16 +25,29 @@ const articlesSlice = createSlice({
   },
 });
 
+const speakingSlice = createSlice({
+  name: 'speaking',
+  initialState: null,
+  reducers: {
+    addData(state, action) {
+      return action.payload;
+    },
+  },
+});
+
+
 //................................................
 
 const store = configureStore({
   reducer: {
     theme: themeSlice.reducer,
     posts: articlesSlice.reducer,
+    speaking: speakingSlice.reducer,
   },
 });
 
 export const themeActions = themeSlice.actions;
 export const postsActions = articlesSlice.actions;
+export const speakingActions = speakingSlice.actions;
 
 export default store;

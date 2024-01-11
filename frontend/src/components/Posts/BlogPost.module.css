@@ -1,0 +1,11 @@
+div.blogCard {
+  background-color: blue;
+  width: 33%;
+}
+
+div.imageContainer img {
+  border-radius: 10px;
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
