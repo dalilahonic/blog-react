@@ -29,7 +29,6 @@ export default function Post({ heading, content, tags }) {
         <div className={styles.divider}>
           <span>
             <img src={DotsSvg} alt='Dots'></img>
-            <svg></svg>
           </span>
         </div>
         <div className={styles.postBody}>

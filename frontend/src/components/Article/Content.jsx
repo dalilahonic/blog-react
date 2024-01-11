@@ -21,7 +21,7 @@ export default function Content() {
     <section>
       <div
         className={`${styles.content} ${
-          darkTheme ? 'dark' : 'light'
+          darkTheme ? styles.dark : styles.light
         }`}
       >
         <p>{article.content}</p>

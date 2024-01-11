@@ -6,9 +6,9 @@ div.content {
 }
 
 div.content.dark p {
-  color: whtite !important ;
+  color: white;
 }
 
 div.content.light p {
-  color: var(--color-dark-no-swop) !important;
+  color: var(--color-dark-no-swop);
 }
