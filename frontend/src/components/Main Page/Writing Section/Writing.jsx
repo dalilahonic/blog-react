@@ -30,9 +30,9 @@ export default function Writing() {
             return (
               <Post
                 key={i}
-                heading={post.attributes.heading}
-                content={post.attributes.content}
-                tags={post.attributes.tags.tags}
+                heading={post.attributes?.heading}
+                content={post.attributes?.content}
+                tags={post.attributes?.tags?.tags}
               />
             );
           })}

@@ -3,10 +3,20 @@ div.section {
   margin: auto;
 }
 
-.dark {
+div.sectionHeading {
+  padding-block: 30px;
+}
+
+div.blogPosts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.5%;
+}
+
+.dark * {
   color: white;
 }
 
-.light {
-  color: black      ;
+.light * {
+  color: var(--color-dark-no-swop);
 }

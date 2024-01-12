@@ -1,15 +1,54 @@
+import { useSelector } from 'react-redux';
 import styles from './BlogPost.module.css';
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function BlogPost() {
+export default function BlogPost({
+  heading,
+  date,
+  description,
+  image,
+  tags,
+  from,
+}) {
+  const navigate = useNavigate();
+  const darkTheme = useSelector(
+    (state) => state.theme.darkTheme
+  );
+
+  let string = '';
+
+  tags?.map((tag, i) => {
+    if (i == tags.length - 1) {
+      string += tag;
+    } else {
+      string += tag + ' | ';
+    }
+  });
+
+  function getLink(heading) {
+    return heading.toLowerCase().split(' ').join('-');
+  }
+
   return (
-    <div className={styles.blogCard}>
+    <div
+      onClick={() => navigate(`/posts/${getLink(heading)}`)}
+      className={`${styles.blogCard} ${
+        darkTheme ? styles.dark : styles.light
+      }`}
+    >
       <div className={styles.imageContainer}>
-        <img />
+        <img src={image?.url} />
       </div>
       <div className={styles.infoContainer}>
-        <p>18th November 2022</p>
-        <h1> Modern frontend</h1>
-        <p> Description </p>
+        <div>
+          <p>{date}</p>
+          <h1>{heading}</h1>
+          <p>{description}</p>
+        </div>
+        <div className={styles.links}>
+          <Link>{from ? from : string}</Link>
+          <Link>Read post </Link>
+        </div>
       </div>
     </div>
   );

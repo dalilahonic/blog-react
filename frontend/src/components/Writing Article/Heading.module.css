@@ -6,7 +6,7 @@ div.header2 {
 
 div.header,
 div.header2 {
-  height: 80vh;
+  min-height: 80vh;
   width: 100%;
 }
 
@@ -50,22 +50,68 @@ div.logoDiv {
   margin: auto;
   z-index: 1000;
   width: 756px;
-  height: 301px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
 
+div.logoDiv.article {
+  height: 301px;
+}
+
+.writing div.logoInner {
+  padding-block: 20px;
+}
+
 div.logoInner {
   height: 60%;
   width: 90%;
   display: flex;
+  gap: 10px;
 }
 
 div.logoHeading {
   height: 100%;
+}
+
+div.logoHeading.article {
   width: 60%;
+}
+
+div.logoHeading.writing h1 {
+  display: inline;
+  background-image: linear-gradient(
+    transparent 0,
+    transparent 55%,
+    var(--color-peach) 55%,
+    var(--color-peach) 90%,
+    transparent 90%,
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 0 100%;
+  animation: underline 0.5s 1s
+    cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+@keyframes underline {
+  100% {
+    background-size: 8rem 100%;
+  }
+}
+
+div.logoHeading.writing {
+  width: 100%;
+  padding-right: 100px;
+  font-size: 18px;
+  line-height: 1.8;
+  padding-block: 40px;
+}
+
+div.logoHeading.writing p {
+  margin-top: 14px;
+  font-size: 20px;
 }
 
 div.logoHeading h1 {
@@ -189,5 +235,17 @@ div.header.light::after {
 }
 
 .light div.logoDiv {
+  background-color: white;
+}
+
+.dark * {
+  color: white;
+}
+
+.light * {
+  color: var(--color-dark-no-swop);
+}
+
+div.light.header {
   background-color: white;
 }

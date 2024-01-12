@@ -56,6 +56,18 @@ div.rightNavigation ul {
   background-color: var(--mint);
 }
 
+.rightNavigation.light {
+  background-color: white;
+}
+
+.rightNavigation.light.speaking {
+  background-color: var(--color-sherbet);
+}
+
+.leftNavigation.light.speaking {
+  background-color: var(--color-sherbet);
+}
+
 .rightNavigation.dark a {
   color: white;
 }

@@ -37,7 +37,7 @@ export default function Post({ heading, content, tags }) {
           </Link>
           <p>{getDescription(content)}...</p>
           <footer>
-            <Link>{tags[0]}</Link>
+            <Link>{tags && tags[0]}</Link>
             <Link>Read post</Link>
           </footer>
         </div>

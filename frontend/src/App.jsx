@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { postsActions, speakingActions } from './store';
 import Posts from './pages/Posts';
+import Speaking from './pages/Speaking';
 
 const router = createBrowserRouter([
   {
@@ -17,17 +18,17 @@ const router = createBrowserRouter([
   },
   { path: '/posts', element: <Posts /> },
   { path: '/posts/:articleId', element: <Article /> },
+  { path: '/speaking', element: <Speaking /> },
 ]);
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('http://localhost:1337/api/posts')
+    fetch('http://localhost:1337/api/posts?populate=deep')
       .then((res) => res.json())
       .then((data) => {
         dispatch(postsActions.addData(data.data));
-        console.log(data);
       });
 
     fetch('http://localhost:1337/api/speakings')

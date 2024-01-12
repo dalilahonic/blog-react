@@ -1,0 +1,17 @@
+div.dark.speakingMain {
+  background-color: var(--main-color) !important;
+}
+
+div.light.speakingMain {
+  background-color: var(--color-sherbet);
+}
+
+div.speaking {
+  padding-block: 150px;
+}
+
+div.wrapper {
+  margin: auto;
+  width: 90%;
+  padding-inline: 130px;
+}

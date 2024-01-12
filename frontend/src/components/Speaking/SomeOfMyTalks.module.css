@@ -1,0 +1,38 @@
+div.talks {
+  width: 100%;
+  margin-top: 50px;
+}
+
+div.talksHeading {
+  padding-block: 50px;
+}
+
+div.talksInner {
+  display: flex;
+}
+
+div.tab {
+  width: 370px;
+  padding: 14px;
+}
+
+div.tab h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+div.tab p {
+  font-size: 17px;
+}
+
+.dark div.tab {
+  border: 2px solid white;
+}
+.light div.tab {
+  border: 2px solid var(--color-dark-no-swop);
+}
+
+.dark * {
+  color: white;
+}

@@ -1,0 +1,11 @@
+div.dark.main {
+  background-color: var(--main-color) !important;
+}
+
+div.light.main {
+  background-color: var(--color-sherbet);
+}
+
+.light {
+  color: var(--color-dark-no-swop);
+}

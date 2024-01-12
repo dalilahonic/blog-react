@@ -1,6 +1,7 @@
 div.blogCard {
-  background-color: blue;
-  width: 33%;
+  width: 31%;
+  margin-bottom: 20px;
+  height: 517px;
 }
 
 div.imageContainer img {
@@ -8,4 +9,62 @@ div.imageContainer img {
   width: 100%;
   height: 230px;
   object-fit: cover;
+}
+
+div.infoContainer {
+  height: calc(517px - 230px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+div.infoContainer p:first-of-type {
+  position: relative;
+}
+
+div.infoContainer p:first-of-type::after {
+  position: absolute;
+  content: '';
+  right: 0;
+  top: 50%;
+  width: 56%;
+  height: 2px;
+}
+
+div.infoContainer h1 {
+  font-size: 25px;
+  margin-block: 12px;
+  line-height: 1.3;
+}
+
+div.infoContainer p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+div.links {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-block: 10px;
+}
+
+div.links::before {
+  position: absolute;
+  content: '';
+  width: 40%;
+  height: 3px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-60%);
+}
+
+.light div.infoContainer p:first-of-type::after,
+.light div.links::before {
+  background-color: #d8d7d8;
+}
+
+.dark div.infoContainer p:first-of-type::after,
+.dark div.links::before {
+  background-color: #383639;
 }

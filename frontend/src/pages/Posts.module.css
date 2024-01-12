@@ -1,3 +1,7 @@
-div.main {
+div.main.dark {
   background-color: var(--main-color);
+}
+
+div.main.light {
+  background-color: white;
 }
