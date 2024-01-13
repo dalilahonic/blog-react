@@ -1,0 +1,76 @@
+div.speakingIntro {
+  width: 100%;
+  display: flex;
+}
+
+div.speakingText {
+  width: 50%;
+}
+
+div.speakingText h2 {
+  font-size: 60px;
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  font-weight: 900;
+}
+
+div.speakingText p {
+  display: block;
+  margin-block: 14px;
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+div.speakingText a {
+  text-decoration: underline;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+div.speakingPhoto {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+div.speakingPhoto::before {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  position: absolute;
+  content: 'beyond tellerrand';
+  top: 8%;
+  left: 18%;
+  width: 165px;
+  height: 34px;
+}
+
+div.speakingPhoto img {
+  width: 400px;
+  height: 246px;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.dark div.speakingPhoto img {
+  box-shadow: 0.5rem 0.5rem white;
+}
+
+.light div.speakingPhoto img {
+  box-shadow: 0.5rem 0.5rem var(--color-dark-no-swop);
+}
+
+.dark div.speakingPhoto::before {
+  background-color: var(--color-dark);
+  box-shadow: 0.3rem 0.3rem white;
+  border: 2px solid white;
+}
+
+.light div.speakingPhoto::before {
+  background-color: white;
+  box-shadow: 0.3rem 0.3rem var(--color-dark-no-swop);
+  color: var(--color-dark-no-swop);
+  border: 2px solid black;
+}

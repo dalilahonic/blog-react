@@ -44,3 +44,11 @@ div.content {
 .light div.divider {
   background-color: var(--color-dark-no-swop);
 }
+
+.dark * {
+  color: white;
+}
+
+.light * {
+  color: var(--color-dark-no-swop);
+}

@@ -1,0 +1,14 @@
+div.speakingTalks {
+  padding-top: 170px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.dark {
+  color: white;
+}
+
+.light {
+  color: var(--color-dark-no-swop);
+}

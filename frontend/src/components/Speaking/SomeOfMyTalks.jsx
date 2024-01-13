@@ -1,10 +1,34 @@
 import { useSelector } from 'react-redux';
 import styles from './SomeOfMyTalks.module.css';
+import Tab from './Tab';
+import { useState } from 'react';
+import Video from './Video';
+
+const VIDEOS = [
+  {
+    heading: 'Interactive web animations with SVG',
+    description: 'Beyond nest Berlin',
+  },
+  {
+    heading: 'Limitation breeds creativity',
+    description: 'Novi Pazar',
+  },
+  {
+    heading: 'Interactive web animations with SVG',
+    description: 'Barcelona',
+  },
+];
 
 export default function SomeOfMyTalks() {
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
+
+  const [activeTab, setActiveTab] = useState(0);
+
+  function handleChangeActiveTab(index) {
+    setActiveTab(index);
+  }
 
   return (
     <div
@@ -17,20 +41,20 @@ export default function SomeOfMyTalks() {
       </div>
       <div className={styles.talksInner}>
         <div className={styles.tabs}>
-          <div className={styles.tab}>
-            <h3>Interactive web animations with SVG</h3>
-            <p> Beyond nest Berlin</p>
-          </div>
-          <div className={styles.tab}>
-            <h3>Limitation breeds creativity</h3>
-            <p> Novi Pazar</p>
-          </div>
-          <div className={styles.tab}>
-            <h3>Interactive web animations with SVG</h3>
-            <p> Barcelona</p>
-          </div>
+          {VIDEOS.map((video, index) => {
+            return (
+              <Tab
+                key={index}
+                heading={video.heading}
+                description={video.description}
+                activeTab={activeTab}
+                index={index}
+                onChangeActiveTab={handleChangeActiveTab}
+              />
+            );
+          })}
         </div>
-        <div className={styles.video}></div>
+        <Video activeTab={activeTab} />
       </div>
     </div>
   );

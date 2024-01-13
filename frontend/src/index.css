@@ -12,7 +12,9 @@
   --color-sherbet: #fef8b4;
   --color-article-logo: #262528;
   --color-dark: #2c2a32;
-  --color-peach: #774069;
+  --color-rose: hsl(344, 56%, 69%);
+  --color-marshmellow: hsl(329, 44%, 71%);
+  --color-peach: hsl(4, 65%, 85%);
 }
 
 * {

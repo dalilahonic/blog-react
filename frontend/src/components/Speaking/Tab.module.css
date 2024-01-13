@@ -1,0 +1,41 @@
+div.tab {
+  width: 370px;
+  padding: 14px;
+  transition: 0.3s;
+}
+
+div.tab:hover {
+  cursor: pointer;
+}
+
+div.tab.active {
+  transform: translate(7px, -7px);
+}
+
+div.tab h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+div.tab p {
+  font-size: 17px;
+}
+
+div.tab.dark {
+  border: 2px solid white;
+}
+
+div.tab.active.dark {
+  box-shadow: -7px 7px 0 0 white;
+  background-color: var(--purple);
+}
+
+div.tab.active.light {
+  box-shadow: -7px 7px 0 0 var(--color-dark-no-swop);
+  background-color: var(--color-peach);
+}
+
+div.tab.light {
+  border: 2px solid var(--color-dark-no-swop);
+}

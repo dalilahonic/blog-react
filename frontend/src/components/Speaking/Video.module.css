@@ -1,0 +1,22 @@
+div.video {
+  width: 60%;
+  height: 56vh;
+  position: relative;
+}
+
+div.video .progress {
+  position: absolute;
+  top: 30%;
+
+  left: 45%;
+  transform: translateY(200%);
+}
+
+div.video iframe {
+  width: 100%;
+  height: 100%;
+}
+
+div.video.loading iframe {
+  opacity: 0;
+}

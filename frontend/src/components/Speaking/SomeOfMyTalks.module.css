@@ -11,26 +11,9 @@ div.talksInner {
   display: flex;
 }
 
-div.tab {
-  width: 370px;
-  padding: 14px;
-}
-
-div.tab h3 {
-  font-size: 18px;
-  font-weight: 800;
-  margin-bottom: 6px;
-}
-
-div.tab p {
-  font-size: 17px;
-}
-
-.dark div.tab {
-  border: 2px solid white;
-}
-.light div.tab {
-  border: 2px solid var(--color-dark-no-swop);
+div.tabs {
+  width: 40%;
+  height: 100%;
 }
 
 .dark * {

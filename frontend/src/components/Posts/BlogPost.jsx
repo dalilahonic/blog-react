@@ -29,6 +29,8 @@ export default function BlogPost({
     return heading.toLowerCase().split(' ').join('-');
   }
 
+  console.log(`http://localhost:1337/${image?.url}`);
+
   return (
     <div
       onClick={() => navigate(`/posts/${getLink(heading)}`)}
@@ -37,7 +39,7 @@ export default function BlogPost({
       }`}
     >
       <div className={styles.imageContainer}>
-        <img src={image?.url} />
+        <img src={`http://localhost:1337${image?.url}`} />
       </div>
       <div className={styles.infoContainer}>
         <div>

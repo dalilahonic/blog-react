@@ -3,6 +3,7 @@ import Heading from '../components/Writing Article/Heading';
 import Navigation from '../components/Main Page/Header/Navigation';
 import Section from '../components/Posts/Section';
 import styles from './Posts.module.css';
+import { useEffect } from 'react';
 
 export default function Posts() {
   const darkTheme = useSelector(
@@ -18,6 +19,10 @@ export default function Posts() {
   const fromElsewhere = data?.filter(
     (article) => article.attributes.fromElsewhere
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <>
