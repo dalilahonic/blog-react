@@ -2,8 +2,13 @@ import MainSpeaking from '../components/Speaking/MainSpeaking';
 import Navigation from '../components/Main Page/Header/Navigation';
 import styles from './Speaking.module.css';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 export default function Speaking() {
+  useEffect(() => {
+    scrollTo(0, 0);
+  });
+
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );

@@ -52,3 +52,44 @@ div.content {
 .light * {
   color: var(--color-dark-no-swop);
 }
+
+div.card.dark h2 {
+  background-image: linear-gradient(
+    transparent 0,
+    transparent 55%,
+    #784069 55%,
+    #784069 90%,
+    transparent 90%,
+    transparent 100%
+  );
+}
+
+div.card.light h2 {
+  background-image: linear-gradient(
+    transparent 0,
+    transparent 55%,
+    var(--color-peach) 55%,
+    var(--color-peach) 90%,
+    transparent 90%,
+    transparent 100%
+  );
+}
+
+div.card h2 {
+  display: inline;
+  text-decoration: none;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: 0% 90%;
+}
+
+div.card h2:hover {
+  animation: animate 0.5s
+    cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+@keyframes animate {
+  100% {
+    background-size: 100% 90%;
+  }
+}

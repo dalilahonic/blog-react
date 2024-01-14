@@ -49,6 +49,11 @@ div.rightContainer {
   line-height: 75px;
 }
 
+.rightContainer p span {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 0.1px;
+}
+
 /* .................THEMES....................... */
 
 .leftContainer.dark {
@@ -65,6 +70,14 @@ div.rightContainer {
 
 .rightContainer.light {
   background-color: var(--mint);
+}
+
+.dark.rightContainer p span {
+  -webkit-text-stroke-color: white;
+}
+
+.light.rightContainer p span {
+  -webkit-text-stroke-color: var(--color-dark-no-swop);
 }
 
 .dark .rightContent {

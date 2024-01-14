@@ -24,8 +24,9 @@ export default function Hero() {
         <div className={styles.rightContent}>
           <p>👋 Hi, I'm Dalila</p>
           <p>
-            I like making fun, interactive things with code.
-            I also talk & write about those things.
+            I like making <span>fun </span>, interactive
+            things with code. I also <span>talk </span> &
+            <span> write </span> about those things.
           </p>
         </div>
       </div>

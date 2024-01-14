@@ -16,10 +16,13 @@ export default function Heading({
     (state) => state.theme.darkTheme
   );
   const { articleId } = useParams();
-  const heading = articleId?.split('-').join(' ');
 
   const target = data?.find(
-    (el) => el.attributes.heading.toLowerCase() === heading
+    (el) =>
+      el.attributes.heading
+        .toLowerCase()
+        .split(' ')
+        .join('-') === articleId
   );
 
   let article = target?.attributes || [];

@@ -33,6 +33,8 @@ export default function Writing() {
                 heading={post.attributes?.heading}
                 content={post.attributes?.content}
                 tags={post.attributes?.tags?.tags}
+                from={post.attributes?.from}
+                link={post.attributes?.link}
               />
             );
           })}

@@ -38,7 +38,7 @@ div.speakingPhoto {
 div.speakingPhoto::before {
   display: flex;
   justify-content: center;
-  align-self: center;
+  align-items: center;
   position: absolute;
   content: 'beyond tellerrand';
   top: 8%;

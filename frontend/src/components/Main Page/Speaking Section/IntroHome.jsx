@@ -26,7 +26,9 @@ export default function SpeakingIntro() {
           conferences and meet-ups all over the world. It
           still terrifies me.
         </p>
-        <Link>Check out my videos and upcoming talks.</Link>
+        <Link to='/speaking'>
+          Check out my videos and upcoming talks.
+        </Link>
       </div>
       <div className={styles.speakingPhoto}>
         <img src={speaker} />

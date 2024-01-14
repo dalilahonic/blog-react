@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
 import styles from './Navigation.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SliderButton from '../Header/SliderButton';
 
 export default function Navigation({ classN }) {
+  const navigate = useNavigate('');
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
@@ -14,7 +15,9 @@ export default function Navigation({ classN }) {
         className={`${styles.leftNavigation} ${
           styles[classN]
         } ${darkTheme ? styles.dark : styles.light}`}
-      ></div>
+      >
+        <h4 onClick={() => navigate('/')}>Dalila</h4>
+      </div>
       <div
         className={`${styles.rightNavigation} ${
           styles[classN]

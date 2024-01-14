@@ -16,7 +16,7 @@ export default function SliderButton() {
     <div
       onClick={toggleTheme}
       className={`${classes.button} ${
-        darkTheme ? null : classes.on
+        darkTheme ? null : classes.light
       }`}
     ></div>
   );

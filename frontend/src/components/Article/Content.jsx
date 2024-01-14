@@ -8,11 +8,15 @@ export default function Content() {
   );
 
   const data = useSelector((state) => state.posts);
+
   const { articleId } = useParams();
-  const heading = articleId.split('-').join(' ');
 
   const target = data?.find(
-    (el) => el.attributes.heading.toLowerCase() === heading
+    (el) =>
+      el.attributes.heading
+        .toLowerCase()
+        .split(' ')
+        .join('-') === articleId
   );
 
   let article = target?.attributes || [];

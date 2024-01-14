@@ -1,10 +1,14 @@
 div.button {
   height: 70%;
-  width: 120px;
+  width: 128px;
   background-color: var(--color-btn);
   border-radius: 220px;
   border: 2px solid white;
   position: relative;
+}
+
+div.button.light {
+  background: linear-gradient(to left, #bff0fc, white);
 }
 
 div.button:hover {
@@ -24,7 +28,7 @@ div.button::after {
   animation: leftToRight 0.2s forwards ease-in-out;
 }
 
-div.button.on:after {
+div.button.light:after {
   animation: rightToLeft 0.2s forwards ease-in-out;
 }
 

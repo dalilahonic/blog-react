@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import Heading from '../components/Writing Article/Heading';
+import Heading from '../components/Article/Heading';
 import Navigation from '../components/Main Page/Header/Navigation';
 import Section from '../components/Posts/Section';
 import styles from './Posts.module.css';
