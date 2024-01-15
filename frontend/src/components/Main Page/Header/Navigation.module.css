@@ -211,7 +211,7 @@ div.rightNavigation ul {
   font-family: Pacifico;
 }
 
-/*.................................THEMES  */
+/*.................................THEMES..................  */
 
 .leftNavigation.dark {
   background-color: var(--main-color);
@@ -222,6 +222,10 @@ div.rightNavigation ul {
 
 .rightNavigation.home.dark {
   background-color: var(--purple);
+}
+
+.rightNavigation.dark {
+  background-color: var(--main-color);
 }
 
 .rightNavigation.home.light {

@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { postsActions, speakingActions } from './store';
 import Posts from './pages/Posts';
 import Speaking from './pages/Speaking';
+import Tags from './pages/Tags';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
   { path: '/posts', element: <Posts /> },
   { path: '/posts/:articleId', element: <Article /> },
   { path: '/speaking', element: <Speaking /> },
+  { path: 'tags/:tagId', element: <Tags /> },
 ]);
 
 function App() {

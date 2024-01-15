@@ -1,13 +1,39 @@
 import { useSelector } from 'react-redux';
 import styles from './Section.module.css';
 import BlogPost from './BlogPost';
+import SearchIcon from '@mui/icons-material/Search';
+import { useEffect, useReducer, useState } from 'react';
+import SearchInput from './SeachInput';
+import { circularProgressClasses } from '@mui/material';
 
-export default function Section({ heading, data }) {
+export default function Section({ heading, data, search }) {
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
 
-  console.log(data);
+  const [inputValue, setInputValue] = useState('');
+  const [isInputOpen, setInputOpen] = useState(false);
+  const [filteredData, setFilteredData] = useState();
+
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data]);
+
+  function handleClick() {
+    setInputOpen(true);
+  }
+
+  function handleChangeInput(value) {
+    setInputValue(value);
+  }
+
+  // useEffect(() => {
+  //   const newData = filteredData?.filter((obj) =>
+
+  //   );
+
+  //   console.log(newData);
+  // }, [inputValue]);
 
   return (
     <div
@@ -16,7 +42,20 @@ export default function Section({ heading, data }) {
       }`}
     >
       <div className={styles.sectionHeading}>
-        <h1>{heading}</h1>
+        <h1>{heading} </h1>
+        {search && (
+          <span>
+            <SearchIcon
+              fontSize='large'
+              onClick={handleClick}
+            />
+            {isInputOpen && (
+              <SearchInput
+                onChangeInput={handleChangeInput}
+              />
+            )}
+          </span>
+        )}
       </div>
       <div className={styles.blogPosts}>
         {data?.map((post) => {

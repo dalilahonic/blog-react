@@ -21,7 +21,7 @@ export default function Article() {
       }`}
     >
       <Navigation />
-      <Heading />
+      <Heading classN='article' />
       <Content />
     </div>
   );

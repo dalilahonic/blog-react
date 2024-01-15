@@ -15,21 +15,9 @@ export default function BlogPost({
     (state) => state.theme.darkTheme
   );
 
-  let string = '';
-
-  tags?.map((tag, i) => {
-    if (i == tags.length - 1) {
-      string += tag;
-    } else {
-      string += tag + ' | ';
-    }
-  });
-
   function getLink(heading) {
     return heading.toLowerCase().split(' ').join('-');
   }
-
-  console.log(`http://localhost:1337/${image?.url}`);
 
   return (
     <div
@@ -48,7 +36,24 @@ export default function BlogPost({
           <p>{description}</p>
         </div>
         <div className={styles.links}>
-          <Link>{from ? from : string}</Link>
+          {from && <Link>{from}</Link>}
+          <div>
+            {!from &&
+              tags?.map((tag, i) => {
+                return (
+                  <Link
+                    key={i}
+                    className={styles.tagLink}
+                    onClick={(e) => {
+                      navigate(`/tags/${tag}`);
+                      e.stopPropagation();
+                    }}
+                  >
+                    {tag} {i == tags.length - 1 ? '' : ' |'}{' '}
+                  </Link>
+                );
+              })}
+          </div>
           <Link>Read post </Link>
         </div>
       </div>

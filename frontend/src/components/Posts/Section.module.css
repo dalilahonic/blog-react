@@ -5,6 +5,13 @@ div.section {
 
 div.sectionHeading {
   padding-block: 30px;
+  display: flex;
+  align-items: center;
+}
+
+div.sectionHeading span {
+  display: flex;
+  margin-inline: 16px;
 }
 
 div.blogPosts {

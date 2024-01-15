@@ -32,8 +32,16 @@ export default function Posts() {
         }`}
       >
         <Navigation />
-        <Heading text={true} title='Writing.' />
-        <Section heading='From my blog' data={fromMyBlog} />
+        <Heading
+          text='writing'
+          title='Writing.'
+          classN='writing'
+        />
+        <Section
+          heading='From my blog'
+          data={fromMyBlog}
+          search={true}
+        />
         <Section
           heading='Articles from elsewhere'
           data={fromElsewhere}

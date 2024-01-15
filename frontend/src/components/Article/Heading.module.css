@@ -79,8 +79,32 @@ div.logoHeading.article {
   width: 60%;
 }
 
+@keyframes underline {
+  100% {
+    background-size: 8rem 100%;
+  }
+}
+
 div.logoHeading.writing h1 {
   display: inline;
+  background-repeat: no-repeat;
+  background-size: 0 100%;
+  animation: underline 0.5s 1s
+    cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+.dark div.logoHeading.writing h1 {
+  background-image: linear-gradient(
+    transparent 0,
+    transparent 55%,
+    var(--purple) 55%,
+    var(--purple) 90%,
+    transparent 90%,
+    transparent 100%
+  );
+}
+
+.light div.logoHeading.writing h1 {
   background-image: linear-gradient(
     transparent 0,
     transparent 55%,
@@ -89,16 +113,6 @@ div.logoHeading.writing h1 {
     transparent 90%,
     transparent 100%
   );
-  background-repeat: no-repeat;
-  background-size: 0 100%;
-  animation: underline 0.5s 1s
-    cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-}
-
-@keyframes underline {
-  100% {
-    background-size: 8rem 100%;
-  }
 }
 
 div.logoHeading.writing {

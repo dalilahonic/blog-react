@@ -35,7 +35,6 @@ const speakingSlice = createSlice({
   },
 });
 
-
 //................................................
 
 const store = configureStore({

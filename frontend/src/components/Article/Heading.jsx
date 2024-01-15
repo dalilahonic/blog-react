@@ -10,6 +10,7 @@ export default function Heading({
   text,
   title,
   description,
+  classN,
 }) {
   const data = useSelector((state) => state.posts);
   const darkTheme = useSelector(
@@ -35,18 +36,14 @@ export default function Heading({
     >
       <div className={styles.header2}>
         <div
-          className={`${styles.logoDiv} ${
-            title ? styles.writing : styles.article
-          } `}
+          className={`${styles.logoDiv} ${styles[classN]}`}
         >
           <div className={styles.logoInner}>
             <div
-              className={`${styles.logoHeading} ${
-                text ? styles.writing : styles.article
-              }`}
+              className={`${styles.logoHeading} ${styles[classN]}`}
             >
               <h1>{article?.heading || title}</h1>
-              {text && (
+              {text == 'writing' && (
                 <>
                   <p>
                     My blog is where I think out loud.
