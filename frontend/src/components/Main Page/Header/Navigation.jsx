@@ -33,8 +33,8 @@ export default function Navigation({ classN }) {
           <Link>
             <li>workshop</li>
           </Link>
-          <Link>
-            <li>playing</li>
+          <Link to='/signin'>
+            <li>register</li>
           </Link>
           <SliderButton />
         </ul>

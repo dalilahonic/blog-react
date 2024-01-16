@@ -11,6 +11,7 @@ import { postsActions, speakingActions } from './store';
 import Posts from './pages/Posts';
 import Speaking from './pages/Speaking';
 import Tags from './pages/Tags';
+import RegisterPage from './pages/RegisterPage';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,8 @@ const router = createBrowserRouter([
   { path: '/posts/:articleId', element: <Article /> },
   { path: '/speaking', element: <Speaking /> },
   { path: 'tags/:tagId', element: <Tags /> },
+  { path: '/signin', element: <RegisterPage /> },
+  { path: '/signup', element: <RegisterPage /> },
 ]);
 
 function App() {

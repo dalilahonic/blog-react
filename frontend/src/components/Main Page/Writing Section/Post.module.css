@@ -51,11 +51,11 @@ div.postBody {
 div.postBody > a {
   display: inline;
   text-decoration: none;
-  font-weight: 900;
-  font-size: 24px;
-  letter-spacing: 1px;
+  font-weight: bolder;
+  font-size: 26px;
+  letter-spacing: 1.1px;
   margin-block: 13px;
-  line-height: 30px;
+  line-height: 26.6px;
   position: relative;
   background-repeat: no-repeat;
   background-size: 0% 90%;
@@ -122,7 +122,7 @@ div.dark.post {
 }
 
 .dark div.postBody > a {
-  color: white;
+  color: #fafafa;
 }
 
 div.post.light {
