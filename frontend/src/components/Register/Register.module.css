@@ -65,3 +65,7 @@ div.dontHaveAccount {
 div.dontHaveAccount a {
   color: var(--color-highlight);
 }
+
+p.error {
+  color: red;
+}

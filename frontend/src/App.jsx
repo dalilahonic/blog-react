@@ -7,7 +7,11 @@ import Home from './pages/Home';
 import Article from './pages/Article';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { postsActions, speakingActions } from './store';
+import {
+  postsActions,
+  speakingActions,
+  userActions,
+} from './store';
 import Posts from './pages/Posts';
 import Speaking from './pages/Speaking';
 import Tags from './pages/Tags';
@@ -41,6 +45,12 @@ function App() {
       .then((data) => {
         dispatch(speakingActions.addData(data.data));
       });
+
+    fetch(
+      'https://blog-36b42-default-rtdb.firebaseio.com/users.json'
+    )
+      .then((res) => res.json())
+      .then((data) => dispatch(userActions.addData(data)));
   }, [dispatch]);
 
   return <RouterProvider router={router} />;
