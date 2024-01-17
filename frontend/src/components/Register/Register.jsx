@@ -8,6 +8,14 @@ import { userActions } from '../../store';
 export default function Register() {
   const pathname = useLocation().pathname;
   const dispatch = useDispatch();
+  const darkTheme = useSelector(
+    (state) => state.theme.darkTheme
+  );
+
+  const isUserLoggedIn = useSelector(
+    (state) => state.users.isUserLoggedIn
+  );
+  console.log(isUserLoggedIn);
 
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
@@ -16,7 +24,9 @@ export default function Register() {
     useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const userData = useSelector((state) => state.users);
+  const userData = useSelector(
+    (state) => state.users.users
+  );
   const navigate = useNavigate();
 
   function handleSignup(e) {
@@ -43,7 +53,7 @@ export default function Register() {
         emailInput
       )
     ) {
-      console.log('ada dobro je');
+      console.log('');
     } else {
       setErrorMessage(
         'Please enter a valid email address.'
@@ -79,7 +89,6 @@ export default function Register() {
       return;
     } else {
       navigate('/signin');
-      console.log('ajde');
     }
 
     setErrorMessage('');
@@ -133,17 +142,26 @@ export default function Register() {
     );
 
     if (isAccValid) {
+      dispatch(userActions.signIn());
       setErrorMessage('');
       setEmailInput('');
       setPasswordInput('');
-      navigate('/');
     } else {
       setErrorMessage('Invalid email or password!');
+      return;
     }
   }
 
+  if (isUserLoggedIn) {
+    navigate('/profile');
+  }
+
   return (
-    <div className={styles.main}>
+    <div
+      className={`${styles.main} ${
+        darkTheme ? styles.dark : styles.light
+      }`}
+    >
       <div className={styles.registerCard}>
         <form
           onSubmit={(e) =>
@@ -175,7 +193,7 @@ export default function Register() {
             </div>
           )}
           <div>
-            <label> Password</label>
+            <label>Password</label>
             <input
               value={passwordInput}
               placeholder='Enter your password'

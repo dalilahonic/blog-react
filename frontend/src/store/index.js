@@ -29,7 +29,7 @@ const speakingSlice = createSlice({
   name: 'speaking',
   initialState: null,
   reducers: {
-    addData(state, action) {
+    addData(_, action) {
       return action.payload;
     },
   },
@@ -39,10 +39,27 @@ const speakingSlice = createSlice({
 
 const usersSlice = createSlice({
   name: 'users',
-  initialState: null,
+  initialState: {
+    users: [],
+    isUserLoggedIn: false,
+    userInformation: {
+      email: '',
+      password: '',
+    },
+  },
   reducers: {
     addData(state, action) {
-      return action.payload;
+      return {
+        ...state,
+        users: action.payload,
+      };
+    },
+    signIn(state) {
+      localStorage.setItem('isUserLoggedIn', true);
+      return {
+        ...state,
+        isUserLoggedIn: true,
+      };
     },
   },
 });

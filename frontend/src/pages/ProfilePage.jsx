@@ -1,11 +1,11 @@
 import Navigation from '../components/Main Page/Header/Navigation';
-import Register from '../components/Register/Register';
+import MainProfile from '../components/Profile/MainProfile';
 
-export default function RegisterPage() {
+export default function ProfilePage() {
   return (
     <>
       <Navigation />
-      <Register />
+      <MainProfile />
     </>
   );
 }

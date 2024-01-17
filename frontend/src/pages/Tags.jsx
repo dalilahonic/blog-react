@@ -17,8 +17,16 @@ export default function Tags() {
     (obj) => obj.attributes.tags?.tags?.includes(params)
   );
 
+  const darkTheme = useSelector(
+    (state) => state.theme.darkTheme
+  );
+
   return (
-    <div className={styles.main}>
+    <div
+      className={`${styles.main} ${
+        darkTheme ? styles.dark : styles.light
+      }`}
+    >
       <Navigation />
       <Heading
         classN='writing'

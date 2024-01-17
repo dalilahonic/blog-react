@@ -35,11 +35,19 @@ div.rightNavigation ul {
 
 .rightNavigation ul li:hover {
   background-clip: text;
-  animation: 0.4s animateNavigation
+}
+
+.rightNavigation.dark ul li:hover {
+  animation: 0.4s animateNavigationDark
     cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-@keyframes animateNavigation {
+.rightNavigation.light ul li:hover {
+  animation: 0.4s animateNavigationLight
+    cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes animateNavigationDark {
   0% {
     color: white;
   }
@@ -170,6 +178,141 @@ div.rightNavigation ul {
   }
 }
 
+@keyframes animateNavigationLight {
+  0% {
+    color: var(--color-dark-no-swop);
+  }
+
+  7% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      #b1b1d8 10%,
+      var(--color-dark-no-swop)
+    );
+  }
+
+  14% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      #b1b1d8 20%,
+      var(--color-dark-no-swop)
+    );
+  }
+
+  21% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      #b1b1d8 30%,
+      var(--color-dark-no-swop)
+    );
+  }
+
+  28% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      #b1b1d8 40%,
+      var(--color-dark-no-swop)
+    );
+  }
+
+  35% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--color-dark-no-swop) 10%,
+      #b1b1d8 40%,
+      var(--color-dark-no-swop)
+    );
+  }
+
+  42% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--color-dark-no-swop) 20%,
+      #b1b1d8 40%,
+      var(--color-dark-no-swop)
+    );
+  }
+
+  49% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--color-dark-no-swop) 30%,
+      #b1b1d8 40%,
+      var(--color-dark-no-swop)
+    );
+  }
+
+  56% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--color-dark-no-swop) 40%,
+      #b1b1d8 40%,
+      var(--color-dark-no-swop)
+    );
+  }
+
+  63% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--color-dark-no-swop) 50%,
+      #b1b1d8 40%,
+      var(--color-dark-no-swop)
+    );
+  }
+
+  70% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--color-dark-no-swop) 60%,
+      #b1b1d8
+    );
+  }
+
+  77% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--color-dark-no-swop) 70%,
+      #b1b1d8
+    );
+  }
+
+  85% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right var(--color-dark-no-swop) 80%,
+      #b1b1d8
+    );
+  }
+
+  92% {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--color-dark-no-swop) 90%,
+      #b1b1d8
+    );
+  }
+
+  99% {
+    color: var(--color-dark-no-swop);
+  }
+
+  100% {
+    color: var(--color-dark-no-swop);
+  }
+}
+
 .rightNavigation ul li::after {
   content: '';
   transition: 1s;
@@ -189,6 +332,9 @@ div.rightNavigation ul {
   background-image: url('../../../assets/underline.svg');
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.rightNavigation.dark ul li:hover::after {
   filter: invert(1);
 }
 

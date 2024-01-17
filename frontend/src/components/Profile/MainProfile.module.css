@@ -1,0 +1,11 @@
+div.profileMain.dark {
+  background-color: var(--main-color);
+}
+
+div.profileMain.light {
+  background-color: white;
+}
+
+div.profileMain {
+  height: 100vh;
+}

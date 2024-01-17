@@ -9,6 +9,12 @@ export default function Navigation({ classN }) {
     (state) => state.theme.darkTheme
   );
 
+  const isUserLoggedIn = useSelector(
+    (state) => state.users.isUserLoggedIn
+  );
+
+  console.log(isUserLoggedIn);
+
   return (
     <nav>
       <div
@@ -33,8 +39,12 @@ export default function Navigation({ classN }) {
           <Link>
             <li>workshop</li>
           </Link>
-          <Link to='/signin'>
-            <li>register</li>
+          <Link
+            to={isUserLoggedIn ? '/profile' : '/signin'}
+          >
+            <li>
+              {isUserLoggedIn ? 'profile' : 'register'}
+            </li>
           </Link>
           <SliderButton />
         </ul>

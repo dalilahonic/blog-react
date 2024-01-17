@@ -16,6 +16,7 @@ import Posts from './pages/Posts';
 import Speaking from './pages/Speaking';
 import Tags from './pages/Tags';
 import RegisterPage from './pages/RegisterPage';
+import ProfilePage from './pages/ProfilePage';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
   { path: 'tags/:tagId', element: <Tags /> },
   { path: '/signin', element: <RegisterPage /> },
   { path: '/signup', element: <RegisterPage /> },
+  { path: '/profile', element: <ProfilePage /> },
 ]);
 
 function App() {
