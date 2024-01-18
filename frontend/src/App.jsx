@@ -29,7 +29,7 @@ const router = createBrowserRouter([
   { path: 'tags/:tagId', element: <Tags /> },
   { path: '/signin', element: <RegisterPage /> },
   { path: '/signup', element: <RegisterPage /> },
-  { path: '/profile', element: <ProfilePage /> },
+  { path: '/:username', element: <ProfilePage /> },
 ]);
 
 function App() {

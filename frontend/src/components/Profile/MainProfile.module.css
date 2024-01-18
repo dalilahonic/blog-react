@@ -1,5 +1,6 @@
 div.profileMain.dark {
   background-color: var(--main-color);
+  color: #fafafa;
 }
 
 div.profileMain.light {
@@ -8,4 +9,69 @@ div.profileMain.light {
 
 div.profileMain {
   height: 100vh;
+  padding: 1% 10%;
+}
+
+div.username {
+  margin-block: 3%;
+}
+
+div.profile {
+  display: flex;
+  height: 50vh;
+}
+
+div.profileLeft {
+  width: 70%;
+  height: 100%;
+}
+
+div.tabs {
+  display: flex;
+  gap: 10px;
+  font-size: 18px;
+}
+
+div.tab {
+  border-bottom: 1px solid blue;
+}
+
+div.homeMain {
+  padding: 4% 2%;
+}
+
+div.readingList {
+  width: 90%;
+  padding: 1% 4%;
+  background-color: grey;
+}
+
+div.userImg {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+div.userImg img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+div.userImg p {
+  font-size: 18px;
+}
+
+div.reading {
+  padding-top: 3%;
+}
+
+div.reading h3 {
+  font-size: 22px;
+}
+
+div.profileRight {
+  height: 100%;
+  width: 30%;
 }

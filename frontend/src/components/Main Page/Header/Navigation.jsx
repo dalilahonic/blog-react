@@ -9,11 +9,11 @@ export default function Navigation({ classN }) {
     (state) => state.theme.darkTheme
   );
 
-  const isUserLoggedIn = useSelector(
-    (state) => state.users.isUserLoggedIn
+  const isUserLoggedIn = localStorage.getItem(
+    'isUserLoggedIn'
   );
 
-  console.log(isUserLoggedIn);
+  const loggedInUser = localStorage.getItem('loggedInUser');
 
   return (
     <nav>
@@ -40,7 +40,11 @@ export default function Navigation({ classN }) {
             <li>workshop</li>
           </Link>
           <Link
-            to={isUserLoggedIn ? '/profile' : '/signin'}
+            to={
+              isUserLoggedIn
+                ? `/${loggedInUser}`
+                : '/signin'
+            }
           >
             <li>
               {isUserLoggedIn ? 'profile' : 'register'}

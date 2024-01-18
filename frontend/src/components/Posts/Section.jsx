@@ -2,11 +2,15 @@ import { useSelector } from 'react-redux';
 import styles from './Section.module.css';
 import BlogPost from './BlogPost';
 import SearchIcon from '@mui/icons-material/Search';
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SearchInput from './SeachInput';
-import { circularProgressClasses } from '@mui/material';
 
-export default function Section({ heading, data, search }) {
+export default function Section({
+  heading,
+  data,
+  search,
+  onChangeInput,
+}) {
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
@@ -24,16 +28,8 @@ export default function Section({ heading, data, search }) {
   }
 
   function handleChangeInput(value) {
-    setInputValue(value);
+    onChangeInput(value);
   }
-
-  // useEffect(() => {
-  //   const newData = filteredData?.filter((obj) =>
-
-  //   );
-
-  //   console.log(newData);
-  // }, [inputValue]);
 
   return (
     <div

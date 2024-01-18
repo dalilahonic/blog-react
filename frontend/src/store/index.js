@@ -64,6 +64,34 @@ const usersSlice = createSlice({
   },
 });
 
+//....................................
+
+const readingListSlice = createSlice({
+  name: 'readingList',
+  initialState: {
+    readingList: [],
+    storiesCount: 0,
+  },
+  reducers: {
+    addToReadingList(state, action) {
+      return {
+        ...state,
+        storiesCount: state.storiesCount + 1,
+        readingList: [...state.readingList, action.payload],
+      };
+    },
+    removeFromReadingList(state, action) {
+      return {
+        ...state,
+        storiesCount: state.storiesCount - 1,
+        readingList: state.readingList.filter(
+          (item) => item.heading !== action.payload
+        ),
+      };
+    },
+  },
+});
+
 //........................................
 
 const store = configureStore({
@@ -72,6 +100,7 @@ const store = configureStore({
     posts: articlesSlice.reducer,
     speaking: speakingSlice.reducer,
     users: usersSlice.reducer,
+    readingList: readingListSlice.reducer,
   },
 });
 
@@ -79,5 +108,6 @@ export const themeActions = themeSlice.actions;
 export const postsActions = articlesSlice.actions;
 export const speakingActions = speakingSlice.actions;
 export const userActions = usersSlice.actions;
+export const readingListActions = readingListSlice.actions;
 
 export default store;

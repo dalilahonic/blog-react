@@ -1,14 +1,19 @@
 div.blogCard {
   width: 31%;
-  margin-bottom: 20px;
+  margin-bottom: 42px;
   height: 517px;
 }
 
-div.imageContainer img {
+div.imageContainer img.mainImage {
   border-radius: 10px;
   width: 100%;
   height: 230px;
   object-fit: cover;
+  position: relative;
+}
+
+img.save {
+  position: absolute;
 }
 
 div.infoContainer {

@@ -1,12 +1,13 @@
 import { useLocation, useNavigate } from 'react-router';
 import styles from './Register.module.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../../store';
 
 export default function Register() {
   const pathname = useLocation().pathname;
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
@@ -15,26 +16,26 @@ export default function Register() {
   const isUserLoggedIn = useSelector(
     (state) => state.users.isUserLoggedIn
   );
-  console.log(isUserLoggedIn);
 
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const [confirmEmail, setConfirmEmail] = useState('');
   const [confirmPassword, setConfirmPassword] =
     useState('');
+  const [userNameInput, setUserNameInput] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [loggedInUser, setLoggedInUser] = useState('');
 
   const userData = useSelector(
     (state) => state.users.users
   );
-  const navigate = useNavigate();
 
   function handleSignup(e) {
     e.preventDefault();
 
-    const validUserData = userData.filter(
-      (user) => user.email && user.password
-    );
+    console.log(userData);
+
+    const validUserData = userData?.filter((user) => user);
 
     if (
       !emailInput ||
@@ -92,6 +93,7 @@ export default function Register() {
     }
 
     setErrorMessage('');
+    setUserNameInput('');
     setEmailInput('');
     setConfirmEmail('');
     setPasswordInput('');
@@ -110,6 +112,8 @@ export default function Register() {
             {
               email: emailInput,
               password: passwordInput,
+              isLoggedIn: false,
+              username: userNameInput,
             },
           ]),
         }
@@ -141,8 +145,40 @@ export default function Register() {
         acc.email === emailInput
     );
 
+    const targetIndex = validUserData?.findIndex(
+      (acc) =>
+        acc.email === emailInput &&
+        acc.password == passwordInput
+    );
+
+    const targetAcc = validUserData.find(
+      (acc) =>
+        acc.email === emailInput &&
+        acc.password == passwordInput
+    );
+
+    setLoggedInUser(targetAcc.username);
+
     if (isAccValid) {
+      fetch(
+        `https://blog-36b42-default-rtdb.firebaseio.com/users/${targetIndex}.json`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...targetAcc,
+            isLoggedIn: true,
+          }),
+        }
+      );
       dispatch(userActions.signIn());
+      localStorage.setItem('loggedIn', true);
+      localStorage.setItem(
+        'loggedInUser',
+        targetAcc.username
+      );
       setErrorMessage('');
       setEmailInput('');
       setPasswordInput('');
@@ -152,9 +188,13 @@ export default function Register() {
     }
   }
 
-  if (isUserLoggedIn) {
-    navigate('/profile');
-  }
+  useEffect(() => {
+    if (loggedInUser) {
+      navigate(`/${loggedInUser}`);
+    }
+  }, [loggedInUser, navigate]);
+
+  console.log(loggedInUser);
 
   return (
     <div
@@ -170,6 +210,18 @@ export default function Register() {
               : handleSignin(e)
           }
         >
+          {pathname === '/signup' && (
+            <div>
+              <label>Username</label>
+              <input
+                placeholder='Enter your username'
+                value={userNameInput}
+                onChange={(e) =>
+                  setUserNameInput(e.target.value)
+                }
+              />
+            </div>
+          )}
           <div>
             <label> Email Address</label>
             <input
@@ -195,6 +247,7 @@ export default function Register() {
           <div>
             <label>Password</label>
             <input
+              type='password'
               value={passwordInput}
               placeholder='Enter your password'
               onChange={(e) =>
@@ -206,6 +259,7 @@ export default function Register() {
             <div>
               <label>Confirm Password</label>
               <input
+                type='password'
                 placeholder='Enter your password'
                 onChange={(e) =>
                   setConfirmPassword(e.target.value)
