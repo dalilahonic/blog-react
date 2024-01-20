@@ -13,9 +13,9 @@ export default function Register() {
     (state) => state.theme.darkTheme
   );
 
-  const isUserLoggedIn = useSelector(
-    (state) => state.users.isUserLoggedIn
-  );
+  // const isUserLoggedIn = useSelector(
+  //   (state) => state.users.isUserLoggedIn
+  // );
 
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
@@ -32,8 +32,6 @@ export default function Register() {
 
   function handleSignup(e) {
     e.preventDefault();
-
-    console.log(userData);
 
     const validUserData = userData?.filter((user) => user);
 
@@ -79,6 +77,10 @@ export default function Register() {
       return;
     }
 
+    const doesUsernameExists = validUserData.some(
+      (acc) => acc.username === userNameInput
+    );
+
     const doesAccountExist = validUserData.some(
       (acc) => acc.email == emailInput
     );
@@ -86,6 +88,11 @@ export default function Register() {
     if (doesAccountExist) {
       setErrorMessage(
         'An account with this email already exists. Please sign in or use a different email.'
+      );
+      return;
+    } else if (doesUsernameExists) {
+      setErrorMessage(
+        'An account with this username already exists. Please sign in or use a different email.'
       );
       return;
     } else {
@@ -157,9 +164,8 @@ export default function Register() {
         acc.password == passwordInput
     );
 
-    setLoggedInUser(targetAcc.username);
-
     if (isAccValid) {
+      setLoggedInUser(targetAcc.username);
       fetch(
         `https://blog-36b42-default-rtdb.firebaseio.com/users/${targetIndex}.json`,
         {
@@ -193,8 +199,6 @@ export default function Register() {
       navigate(`/${loggedInUser}`);
     }
   }, [loggedInUser, navigate]);
-
-  console.log(loggedInUser);
 
   return (
     <div

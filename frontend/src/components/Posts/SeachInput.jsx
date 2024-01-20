@@ -6,6 +6,7 @@ export default function SearchInput({ onChangeInput }) {
 
   return (
     <input
+      className={styles.searchInput}
       value={inputValue}
       onChange={(e) => {
         setInputValue(e.target.value);

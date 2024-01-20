@@ -19,8 +19,25 @@ const articlesSlice = createSlice({
   name: 'articles',
   initialState: null,
   reducers: {
-    addData(state, action) {
+    addData(_, action) {
       return action.payload;
+    },
+    saveArticle(state, action) {
+      const targetIndex = state.findIndex(
+        (obj) =>
+          obj.attributes.heading === action.payload.heading
+      );
+      state[targetIndex].attributes.saved = true;
+      return state;
+    },
+
+    removeFromSaved(state, action) {
+      const targetIndex = state.findIndex(
+        (obj) =>
+          obj.attributes.heading === action.payload.heading
+      );
+      state[targetIndex].attributes.saved = false;
+      return state;
     },
   },
 });

@@ -1,6 +1,6 @@
 div.profileMain.dark {
   background-color: var(--main-color);
-  color: #fafafa;
+  color: white;
 }
 
 div.profileMain.light {
@@ -21,9 +21,17 @@ div.profile {
   height: 50vh;
 }
 
+.dark div.profile {
+  color: #242424;
+}
+
 div.profileLeft {
   width: 70%;
   height: 100%;
+}
+
+.dark div.tabs {
+  color: white;
 }
 
 div.tabs {
@@ -42,8 +50,55 @@ div.homeMain {
 
 div.readingList {
   width: 90%;
-  padding: 1% 4%;
-  background-color: grey;
+  height: 140px;
+  padding-left: 4%;
+  background-color: #f2f2f2;
+  display: flex;
+  border-radius: 3.2px;
+  border: 1px solid #e3e3e3;
+}
+
+div.readingListLeft {
+  padding-block: 1.7%;
+  width: 50%;
+  height: 100%;
+}
+
+div.articles {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+div.articles div {
+  height: 100%;
+  width: 50%;
+  background-color: #e3e3e3;
+  position: absolute;
+}
+
+div.articles div:first-of-type {
+  left: 0;
+  z-index: 300;
+  border-right: 3px solid #f9f9f9;
+}
+
+div.articles div:nth-of-type(2) {
+  left: 33%;
+  z-index: 200;
+  border-right: 3px solid #f9f9f9;
+}
+
+div.articles div:nth-of-type(3) {
+  right: 0;
+  z-index: 100;
+}
+
+div.articles div img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 div.userImg {

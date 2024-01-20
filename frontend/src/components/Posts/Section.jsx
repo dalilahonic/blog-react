@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import styles from './Section.module.css';
 import BlogPost from './BlogPost';
 import SearchIcon from '@mui/icons-material/Search';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import SearchInput from './SeachInput';
 
 export default function Section({
@@ -11,20 +11,13 @@ export default function Section({
   search,
   onChangeInput,
 }) {
+  const [isInputOpen, setIsInputOpen] = useState(false);
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
 
-  const [inputValue, setInputValue] = useState('');
-  const [isInputOpen, setInputOpen] = useState(false);
-  const [filteredData, setFilteredData] = useState();
-
-  useEffect(() => {
-    setFilteredData(data);
-  }, [data]);
-
   function handleClick() {
-    setInputOpen(true);
+    setIsInputOpen((prev) => !prev);
   }
 
   function handleChangeInput(value) {
@@ -58,12 +51,14 @@ export default function Section({
           return (
             <BlogPost
               key={post.id}
+              saved={post.attributes.saved}
               heading={post.attributes.heading}
               date={post.attributes.date}
               description={post.attributes.description}
               image={post.attributes.img.data?.attributes}
               from={post.attributes.from}
               tags={post.attributes?.tags?.tags}
+              link={post.attributes.link}
             />
           );
         })}

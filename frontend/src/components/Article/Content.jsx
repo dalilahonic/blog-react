@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import styles from './Content.module.css';
 import { useParams } from 'react-router';
+import findTargetElement from '../../utils/findTargetElement';
 
 export default function Content() {
   const darkTheme = useSelector(
@@ -11,13 +12,7 @@ export default function Content() {
 
   const { articleId } = useParams();
 
-  const target = data?.find(
-    (el) =>
-      el.attributes.heading
-        .toLowerCase()
-        .split(' ')
-        .join('-') === articleId
-  );
+  const target = findTargetElement(data, articleId);
 
   let article = target?.attributes || [];
 

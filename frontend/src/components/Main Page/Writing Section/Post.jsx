@@ -2,6 +2,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './Post.module.css';
 import { useSelector } from 'react-redux';
 import DotsSvg from '../../../assets/dots.svg';
+import getLink from '../../../utils/getLink';
+import getDescription from '../../../utils/getDescription';
 
 export default function Post({
   heading,
@@ -15,19 +17,10 @@ export default function Post({
     (state) => state.theme.darkTheme
   );
 
-  function getLink(heading) {
-    return heading.toLowerCase().split(' ').join('-');
-  }
-
-  function getDescription(content) {
-    return content.split(' ').slice(0, 22).join(' ');
-  }
-
   function handleClick() {
     if (tags) navigate(`/posts/${getLink(heading)}`);
     else {
       window.location.href = link;
-      console.log(link);
     }
   }
 

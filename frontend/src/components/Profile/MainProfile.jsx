@@ -10,6 +10,9 @@ export default function MainProfile() {
   const storiesCount = useSelector(
     (state) => state.readingList.storiesCount
   );
+  const savedArticles = useSelector(
+    (state) => state.readingList.readingList
+  );
 
   return (
     <div
@@ -28,23 +31,57 @@ export default function MainProfile() {
           </div>
           <div className={styles.homeMain}>
             <div className={styles.readingList}>
-              <div className={styles.userImg}>
-                <img
-                  alt='Dalilahonic'
-                  src='https://miro.medium.com/v2/resize:fill:40:40/1*dmbNkD5D-u45r44go_cf0g.png'
-                  width='20'
-                  height='20'
-                  loading='lazy'
-                />
-                <p>{params}</p>
+              <div className={styles.readingListLeft}>
+                <div className={styles.userImg}>
+                  <img
+                    alt='Dalilahonic'
+                    src='https://miro.medium.com/v2/resize:fill:40:40/1*dmbNkD5D-u45r44go_cf0g.png'
+                    width='20'
+                    height='20'
+                    loading='lazy'
+                  />
+                  <p>{params}</p>
+                </div>
+                <div className={styles.reading}>
+                  <h3>Reading List</h3>
+                  <p>
+                    {storiesCount == 0
+                      ? 'No stories'
+                      : storiesCount + ' stories'}
+                  </p>
+                </div>
               </div>
-              <div className={styles.reading}>
-                <h3>Reading List</h3>
-                <p>
-                  {storiesCount == 0
-                    ? 'No stories'
-                    : storiesCount + ' stories'}
-                </p>
+              <div className={styles.articles}>
+                <div>
+                  {savedArticles[0] && (
+                    <img
+                      src={
+                        'http://localhost:1337' +
+                        savedArticles[0]?.image
+                      }
+                    />
+                  )}
+                </div>
+                <div>
+                  {savedArticles[1] && (
+                    <img
+                      src={
+                        'http://localhost:1337' +
+                        savedArticles[1]?.image
+                      }
+                    />
+                  )}
+                </div>
+                <div>
+                  {savedArticles[2] && (
+                    <img
+                      src={
+                        'http://localhost:1337' +
+                        savedArticles[2]?.image
+                      }
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </div>

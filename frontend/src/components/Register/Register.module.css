@@ -1,5 +1,5 @@
 div.main {
-  min-height: 70vh;
+  min-height: 87vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -43,6 +43,7 @@ div.registerCard input {
   outline: none;
   margin-block: 4%;
   font-size: 15px;
+  padding-inline: 10px;
 }
 
 div.registerCard button {

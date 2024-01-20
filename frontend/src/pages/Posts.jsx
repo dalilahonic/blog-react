@@ -14,7 +14,6 @@ export default function Posts() {
   const data = useSelector((state) => state.posts);
 
   const fromMyBlog = data?.filter((article) => {
-    console.log(article.attributes.heading + inputValue);
     return (
       !article.attributes.fromElsewhere &&
       article.attributes.heading

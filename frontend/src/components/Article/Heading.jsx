@@ -5,6 +5,7 @@ import intro from '../../assets/intro.svg';
 import calendar from '../../assets/calendar.svg';
 import time from '../../assets/time.svg';
 import { Link } from 'react-router-dom';
+import findTargetElement from '../../utils/findTargetElement';
 
 export default function Heading({
   text,
@@ -18,13 +19,7 @@ export default function Heading({
   );
   const { articleId } = useParams();
 
-  const target = data?.find(
-    (el) =>
-      el.attributes.heading
-        .toLowerCase()
-        .split(' ')
-        .join('-') === articleId
-  );
+  const target = findTargetElement(data, articleId);
 
   let article = target?.attributes || [];
 
@@ -77,7 +72,7 @@ export default function Heading({
                 </div>
                 <div>
                   <img src={calendar} />
-                  <p>30th July 2019</p>
+                  <p>{article.date}</p>
                 </div>
                 <div>
                   <img src={time} />

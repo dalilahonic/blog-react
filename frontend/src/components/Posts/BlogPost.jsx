@@ -3,8 +3,11 @@ import styles from './BlogPost.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import { readingListActions } from '../../store';
-import { useState } from 'react';
+import {
+  postsActions,
+  readingListActions,
+} from '../../store';
+import getLink from '../../utils/getLink';
 
 export default function BlogPost({
   heading,
@@ -13,45 +16,46 @@ export default function BlogPost({
   image,
   tags,
   from,
+  saved,
+  link,
 }) {
   const navigate = useNavigate();
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
   const dispatch = useDispatch();
-  const [saved, setSaved] = useState(false);
-
-  function getLink(heading) {
-    return heading.toLowerCase().split(' ').join('-');
-  }
 
   function addToReadingList(e) {
     e.stopPropagation();
-    setSaved((prev) => !prev);
     const obj = {
       heading,
       description,
       image: image.url,
     };
-
     dispatch(readingListActions.addToReadingList(obj));
+    dispatch(postsActions.saveArticle({ heading }));
   }
 
   function removeFromReadingList(e) {
     e.stopPropagation();
-    setSaved((prev) => !prev);
     dispatch(
       readingListActions.removeFromReadingList(heading)
     );
+    dispatch(postsActions.removeFromSaved({ heading }));
   }
 
-  const reading = useSelector(
-    (state) => state.readingList.readingList
-  );
+  const isLoggedIn = localStorage.getItem('isUserLoggedIn');
 
+  function handleClick() {
+    if (from) {
+      window.location.href = link;
+    } else {
+      navigate(`/posts/${getLink(heading)}`);
+    }
+  }
   return (
     <div
-      onClick={() => navigate(`/posts/${getLink(heading)}`)}
+      onClick={handleClick}
       className={`${styles.blogCard} ${
         darkTheme ? styles.dark : styles.light
       }`}
@@ -61,17 +65,18 @@ export default function BlogPost({
           className={styles.mainImage}
           src={`http://localhost:1337${image?.url}`}
         />
-        {!saved ? (
-          <BookmarkBorderIcon
-            className={styles.save}
-            onClick={(e) => addToReadingList(e)}
-          />
-        ) : (
-          <BookmarkIcon
-            className={styles.save}
-            onClick={(e) => removeFromReadingList(e)}
-          />
-        )}
+        {isLoggedIn &&
+          (!saved ? (
+            <BookmarkBorderIcon
+              className={styles.save}
+              onClick={(e) => addToReadingList(e)}
+            />
+          ) : (
+            <BookmarkIcon
+              className={styles.save}
+              onClick={(e) => removeFromReadingList(e)}
+            />
+          ))}
       </div>
       <div className={styles.infoContainer}>
         <div>

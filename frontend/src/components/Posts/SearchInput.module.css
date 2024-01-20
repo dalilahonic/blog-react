@@ -1,4 +1,9 @@
-input {
+input.searchInput {
   padding-inline: 10px;
   color: black !important;
+  width: 20vw;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  transition: 1s;
 }
