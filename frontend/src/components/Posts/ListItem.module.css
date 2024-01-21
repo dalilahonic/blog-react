@@ -1,0 +1,27 @@
+div.listItem {
+  padding: 10%;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+div.listItem label {
+  color: #fafafa;
+  font-size: 18px;
+}
+
+div.listItem h4 {
+  color: #1a8917;
+  font-size: 18px;
+}
+
+div.listItem h4:hover {
+  cursor: pointer;
+  color: white;
+}
+
+div.listItem input {
+  width: 20px;
+  height: 20px;
+}

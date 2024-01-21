@@ -21,6 +21,7 @@ div.infoContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 div.infoContainer p:first-of-type {

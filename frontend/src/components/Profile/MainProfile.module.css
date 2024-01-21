@@ -120,10 +120,24 @@ div.userImg p {
 
 div.reading {
   padding-top: 3%;
+  display: flex;
+  flex-direction: column;
 }
 
 div.reading h3 {
   font-size: 22px;
+}
+
+div.reading svg {
+  align-self: flex-end;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  color: #6b6b6b;
+}
+
+div.reading svg:hover {
+  cursor: pointer;
+  color: black;
 }
 
 div.profileRight {

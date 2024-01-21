@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import styles from './MainProfile.module.css';
 import { useParams } from 'react-router';
+import OptionsSvg from './OptionsSvg';
 
 export default function MainProfile() {
   const params = useParams().username;
@@ -49,6 +50,8 @@ export default function MainProfile() {
                       ? 'No stories'
                       : storiesCount + ' stories'}
                   </p>
+
+                  <OptionsSvg />
                 </div>
               </div>
               <div className={styles.articles}>

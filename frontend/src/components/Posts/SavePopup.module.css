@@ -1,0 +1,11 @@
+div.popup {
+  z-index: 30;
+  color: #ffffff;
+  background-color: #201d20;
+  position: absolute;
+  top: 10%;
+  left: -20%;
+  padding: 2%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+}

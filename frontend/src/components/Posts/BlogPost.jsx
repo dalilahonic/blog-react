@@ -8,6 +8,8 @@ import {
   readingListActions,
 } from '../../store';
 import getLink from '../../utils/getLink';
+import { useState } from 'react';
+import Popup from './SavePopup';
 
 export default function BlogPost({
   heading,
@@ -19,6 +21,8 @@ export default function BlogPost({
   saved,
   link,
 }) {
+  const [openPopup, setOpenPopup] = useState(false);
+
   const navigate = useNavigate();
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
@@ -27,6 +31,7 @@ export default function BlogPost({
 
   function addToReadingList(e) {
     e.stopPropagation();
+    setOpenPopup(true);
     const obj = {
       heading,
       description,
@@ -65,21 +70,24 @@ export default function BlogPost({
           className={styles.mainImage}
           src={`http://localhost:1337${image?.url}`}
         />
-        {isLoggedIn &&
-          (!saved ? (
-            <BookmarkBorderIcon
-              className={styles.save}
-              onClick={(e) => addToReadingList(e)}
-            />
-          ) : (
-            <BookmarkIcon
-              className={styles.save}
-              onClick={(e) => removeFromReadingList(e)}
-            />
-          ))}
       </div>
       <div className={styles.infoContainer}>
         <div>
+          {isLoggedIn &&
+            (!saved ? (
+              <BookmarkBorderIcon
+                className={styles.save}
+                onClick={(e) => addToReadingList(e)}
+              />
+            ) : (
+              <>
+                <BookmarkIcon
+                  className={styles.save}
+                  onClick={(e) => removeFromReadingList(e)}
+                />
+                <Popup />
+              </>
+            ))}
           <p>{date}</p>
           <h1>{heading}</h1>
           <p>{description}</p>
