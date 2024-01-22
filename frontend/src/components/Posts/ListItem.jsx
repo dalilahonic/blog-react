@@ -1,19 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './ListItem.module.css';
 
-export default function ListItem({ title, checked }) {
+export default function ListItem({
+  title,
+  checked,
+  onCheckList,
+}) {
   const [isChecked, setIsChecked] = useState(checked);
 
-  function handleClick() {
+  function handleChange() {
     setIsChecked((prev) => !prev);
   }
+
+  useEffect(() => {
+    onCheckList(isChecked, title);
+  }, [checked, isChecked, title, onCheckList]);
 
   return (
     <div className={styles.listItem}>
       <input
         type='checkbox'
         checked={isChecked ? true : false}
-        onClick={() => handleClick()}
+        onChange={() => handleChange()}
       />
       <label> {title}</label>
     </div>

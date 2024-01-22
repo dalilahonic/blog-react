@@ -9,7 +9,7 @@ import {
 } from '../../store';
 import getLink from '../../utils/getLink';
 import { useState } from 'react';
-import Popup from './SavePopup';
+import SavePopup from './SavePopup';
 
 export default function BlogPost({
   heading,
@@ -21,28 +21,26 @@ export default function BlogPost({
   saved,
   link,
 }) {
-  const [openPopup, setOpenPopup] = useState(false);
+  const [isSavePopupOpen, setIsSavePopupOpen] =
+    useState(false);
 
   const navigate = useNavigate();
   const darkTheme = useSelector(
-    (state) => state.theme.darkTheme
+    (state) => state.theme.darkThemes
   );
   const dispatch = useDispatch();
 
+  const list = useSelector((state) => state.readingList);
+
   function addToReadingList(e) {
     e.stopPropagation();
-    setOpenPopup(true);
-    const obj = {
-      heading,
-      description,
-      image: image.url,
-    };
-    dispatch(readingListActions.addToReadingList(obj));
+    setIsSavePopupOpen(true);
     dispatch(postsActions.saveArticle({ heading }));
   }
 
   function removeFromReadingList(e) {
     e.stopPropagation();
+    setIsSavePopupOpen(false);
     dispatch(
       readingListActions.removeFromReadingList(heading)
     );
@@ -58,6 +56,24 @@ export default function BlogPost({
       navigate(`/posts/${getLink(heading)}`);
     }
   }
+
+  function handleCheckList(checked, listName) {
+    if (checked) {
+      let camelListName = listName.split(' ').join('');
+      const obj = {
+        heading,
+        description,
+        image: image.url,
+      };
+      dispatch(
+        readingListActions.addToReadingList({
+          obj,
+          listName: camelListName || 'readingList',
+        })
+      );
+    }
+  }
+
   return (
     <div
       onClick={handleClick}
@@ -85,7 +101,15 @@ export default function BlogPost({
                   className={styles.save}
                   onClick={(e) => removeFromReadingList(e)}
                 />
-                <Popup />
+                {isSavePopupOpen && (
+                  <SavePopup
+                    heading={heading}
+                    description={description}
+                    image={image}
+                    onCheckList={handleCheckList}
+                    setIsSavePopupOpen={setIsSavePopupOpen}
+                  />
+                )}
               </>
             ))}
           <p>{date}</p>

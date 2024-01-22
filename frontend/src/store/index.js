@@ -86,24 +86,39 @@ const usersSlice = createSlice({
 const readingListSlice = createSlice({
   name: 'readingList',
   initialState: {
-    readingList: [],
-    storiesCount: 0,
+    readingList: {
+      list: [],
+      storiesCount: 0,
+    },
   },
   reducers: {
     addToReadingList(state, action) {
+      const listName = action.payload.listName;
+
+      const currentList = state[listName] || {
+        storiesCount: 0,
+        list: [],
+      };
       return {
         ...state,
-        storiesCount: state.storiesCount + 1,
-        readingList: [...state.readingList, action.payload],
+        [listName]: {
+          ...currentList,
+          storiesCount: currentList.storiesCount + 1,
+          list: [...currentList.list, action.payload.obj],
+        },
       };
     },
+
     removeFromReadingList(state, action) {
       return {
         ...state,
-        storiesCount: state.storiesCount - 1,
-        readingList: state.readingList.filter(
-          (item) => item.heading !== action.payload
-        ),
+        readingList: {
+          ...state.readingList,
+          storiesCount: state.readingList.storiesCount - 1,
+          list: state.readingList.list.filter(
+            (item) => item.heading !== action.payload
+          ),
+        },
       };
     },
   },

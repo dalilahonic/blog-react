@@ -2,7 +2,12 @@ import { useState } from 'react';
 import styles from './ListItem.module.css';
 import Popup from './Popup';
 
-export default function CreateNewList({ title }) {
+export default function CreateNewList({
+  title,
+  heading,
+  description,
+  image,
+}) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   function handleClick() {
@@ -14,7 +19,12 @@ export default function CreateNewList({ title }) {
     <div className={styles.listItem}>
       <h4 onClick={handleClick}> {title}</h4>
       {isPopupOpen && (
-        <Popup setIsPopupOpen={setIsPopupOpen} />
+        <Popup
+          setIsPopupOpen={setIsPopupOpen}
+          heading={heading}
+          description={description}
+          image={image}
+        />
       )}
     </div>
   );

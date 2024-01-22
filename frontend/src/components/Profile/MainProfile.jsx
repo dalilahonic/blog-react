@@ -1,19 +1,15 @@
 import { useSelector } from 'react-redux';
 import styles from './MainProfile.module.css';
 import { useParams } from 'react-router';
-import OptionsSvg from './OptionsSvg';
+import ReadingList from './ReadingList';
+import ProfileRight from './ProfileRight';
 
 export default function MainProfile() {
   const params = useParams().username;
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
-  const storiesCount = useSelector(
-    (state) => state.readingList.storiesCount
-  );
-  const savedArticles = useSelector(
-    (state) => state.readingList.readingList
-  );
+  const lists = useSelector((state) => state.readingList);
 
   return (
     <div
@@ -31,65 +27,18 @@ export default function MainProfile() {
             <div className={styles.tab}>About</div>
           </div>
           <div className={styles.homeMain}>
-            <div className={styles.readingList}>
-              <div className={styles.readingListLeft}>
-                <div className={styles.userImg}>
-                  <img
-                    alt='Dalilahonic'
-                    src='https://miro.medium.com/v2/resize:fill:40:40/1*dmbNkD5D-u45r44go_cf0g.png'
-                    width='20'
-                    height='20'
-                    loading='lazy'
-                  />
-                  <p>{params}</p>
-                </div>
-                <div className={styles.reading}>
-                  <h3>Reading List</h3>
-                  <p>
-                    {storiesCount == 0
-                      ? 'No stories'
-                      : storiesCount + ' stories'}
-                  </p>
-
-                  <OptionsSvg />
-                </div>
-              </div>
-              <div className={styles.articles}>
-                <div>
-                  {savedArticles[0] && (
-                    <img
-                      src={
-                        'http://localhost:1337' +
-                        savedArticles[0]?.image
-                      }
-                    />
-                  )}
-                </div>
-                <div>
-                  {savedArticles[1] && (
-                    <img
-                      src={
-                        'http://localhost:1337' +
-                        savedArticles[1]?.image
-                      }
-                    />
-                  )}
-                </div>
-                <div>
-                  {savedArticles[2] && (
-                    <img
-                      src={
-                        'http://localhost:1337' +
-                        savedArticles[2]?.image
-                      }
-                    />
-                  )}
-                </div>
-              </div>
-            </div>
+            {Object.entries(lists).map((list, i) => {
+              return (
+                <ReadingList
+                  key={i}
+                  title={list[0]}
+                  list={list[1]}
+                />
+              );
+            })}
           </div>
         </div>
-        <div className={styles.profileRight}></div>
+        <ProfileRight />
       </div>
     </div>
   );

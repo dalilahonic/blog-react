@@ -1,54 +1,4 @@
-div.profileMain.dark {
-  background-color: var(--main-color);
-  color: white;
-}
-
-div.profileMain.light {
-  background-color: white;
-}
-
-div.profileMain {
-  height: 100vh;
-  padding: 1% 10%;
-}
-
-div.username {
-  margin-block: 3%;
-}
-
-div.profile {
-  display: flex;
-  height: 50vh;
-}
-
-.dark div.profile {
-  color: #242424;
-}
-
-div.profileLeft {
-  width: 70%;
-  height: 100%;
-}
-
-.dark div.tabs {
-  color: white;
-}
-
-div.tabs {
-  display: flex;
-  gap: 10px;
-  font-size: 18px;
-}
-
-div.tab {
-  border-bottom: 1px solid blue;
-}
-
-div.homeMain {
-  padding: 4% 2%;
-}
-
-/* div.readingList {
+div.readingList {
   width: 90%;
   height: 140px;
   padding-left: 4%;
@@ -56,6 +6,7 @@ div.homeMain {
   display: flex;
   border-radius: 3.2px;
   border: 1px solid #e3e3e3;
+  margin-block: 20px;
 }
 
 div.readingListLeft {
@@ -138,9 +89,4 @@ div.reading svg {
 div.reading svg:hover {
   cursor: pointer;
   color: black;
-} */
-
-/* div.profileRight {
-  height: 100%;
-  width: 30%;
-} */
+}
