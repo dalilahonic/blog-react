@@ -14,7 +14,7 @@ export default function ListItem({
 
   useEffect(() => {
     onCheckList(isChecked, title);
-  }, [checked, isChecked, title, onCheckList]);
+  }, [isChecked, checked, title]);
 
   return (
     <div className={styles.listItem}>
@@ -23,7 +23,7 @@ export default function ListItem({
         checked={isChecked ? true : false}
         onChange={() => handleChange()}
       />
-      <label> {title}</label>
+      <label>{title}</label>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import {
 import Home from './pages/Home';
 import Article from './pages/Article';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   postsActions,
   speakingActions,
@@ -33,7 +33,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const state = useSelector((state) => state.readingList);
+  console.log(state);
   const dispatch = useDispatch();
+
+  console.log(state);
 
   useEffect(() => {
     fetch('http://localhost:1337/api/posts?populate=deep')

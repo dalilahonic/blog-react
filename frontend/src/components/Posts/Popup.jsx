@@ -11,6 +11,8 @@ export default function Popup({
   heading,
   description,
   image,
+  onCreateNewList,
+  setIsSavePopupOpen,
 }) {
   const [isDescriptionOpen, setIsDescriptionOpen] =
     useState(false);
@@ -35,14 +37,21 @@ export default function Popup({
         description,
         image: image.url,
       };
+
       dispatch(
         readingListActions.addToReadingList({
           obj,
-          listName: nameInput.split(' ').join(''),
+          listName: nameInput.split(' ').join('_'),
         })
       );
+
       dispatch(postsActions.saveArticle({ heading }));
       setIsPopupOpen(false);
+      onCreateNewList({
+        isChecked: true,
+        identefier: nameInput.split(' ').join('_'),
+      });
+      setIsSavePopupOpen(false);
     } else {
       return;
     }

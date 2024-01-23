@@ -86,7 +86,7 @@ const usersSlice = createSlice({
 const readingListSlice = createSlice({
   name: 'readingList',
   initialState: {
-    readingList: {
+    Reading_List: {
       list: [],
       storiesCount: 0,
     },
@@ -99,6 +99,7 @@ const readingListSlice = createSlice({
         storiesCount: 0,
         list: [],
       };
+
       return {
         ...state,
         [listName]: {
@@ -110,16 +111,17 @@ const readingListSlice = createSlice({
     },
 
     removeFromReadingList(state, action) {
-      return {
-        ...state,
-        readingList: {
-          ...state.readingList,
-          storiesCount: state.readingList.storiesCount - 1,
-          list: state.readingList.list.filter(
-            (item) => item.heading !== action.payload
-          ),
-        },
-      };
+      let newState = { ...state };
+
+      newState = Object.keys(newState).forEach((key) => {
+        return (newState[key].list = newState[
+          key
+        ].list.filter(
+          (el) => el.heading !== action.payload.heading
+        ));
+      });
+
+      return newState;
     },
   },
 });

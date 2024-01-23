@@ -7,6 +7,8 @@ export default function CreateNewList({
   heading,
   description,
   image,
+  onCreateNewList,
+  setIsSavePopupOpen,
 }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -24,6 +26,8 @@ export default function CreateNewList({
           heading={heading}
           description={description}
           image={image}
+          onCreateNewList={onCreateNewList}
+          setIsSavePopupOpen={setIsSavePopupOpen}
         />
       )}
     </div>

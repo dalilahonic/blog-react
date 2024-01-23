@@ -8,7 +8,7 @@ import {
   readingListActions,
 } from '../../store';
 import getLink from '../../utils/getLink';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SavePopup from './SavePopup';
 
 export default function BlogPost({
@@ -24,6 +24,14 @@ export default function BlogPost({
   const [isSavePopupOpen, setIsSavePopupOpen] =
     useState(false);
 
+  useEffect(() => {
+    if (isSavePopupOpen) {
+      setTimeout(() => {
+        setIsSavePopupOpen(false);
+      }, 2000);
+    }
+  }, [isSavePopupOpen]);
+
   const navigate = useNavigate();
   const darkTheme = useSelector(
     (state) => state.theme.darkThemes
@@ -31,6 +39,7 @@ export default function BlogPost({
   const dispatch = useDispatch();
 
   const list = useSelector((state) => state.readingList);
+  console.log(list);
 
   function addToReadingList(e) {
     e.stopPropagation();
@@ -42,7 +51,7 @@ export default function BlogPost({
     e.stopPropagation();
     setIsSavePopupOpen(false);
     dispatch(
-      readingListActions.removeFromReadingList(heading)
+      readingListActions.removeFromReadingList({ heading })
     );
     dispatch(postsActions.removeFromSaved({ heading }));
   }
@@ -59,16 +68,18 @@ export default function BlogPost({
 
   function handleCheckList(checked, listName) {
     if (checked) {
-      let camelListName = listName.split(' ').join('');
+      let camelListName = listName.split(' ').join('_');
+
       const obj = {
         heading,
         description,
         image: image.url,
       };
+
       dispatch(
         readingListActions.addToReadingList({
           obj,
-          listName: camelListName || 'readingList',
+          listName: camelListName || 'Reading_List',
         })
       );
     }

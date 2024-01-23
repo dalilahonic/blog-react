@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import CreateNewList from './CreateNewList';
 import ListItem from './ListItem';
 import styles from './SavePopup.module.css';
+import { useState } from 'react';
 
 export default function SavePopup({
   heading,
@@ -10,11 +11,18 @@ export default function SavePopup({
   onCheckList,
   setIsSavePopupOpen,
 }) {
+  const [newList, setNewList] = useState({});
+
   function handleClick(e) {
     e.stopPropagation();
   }
 
   const lists = useSelector((state) => state.readingList);
+
+  console.log(newList);
+  function handleCreateNewList(obj) {
+    setNewList(obj);
+  }
 
   return (
     <div
@@ -22,11 +30,16 @@ export default function SavePopup({
       className={styles.popup}
     >
       {Object.keys(lists).map((el, i) => {
+        console.log(newList.identefier, el);
         return (
           <ListItem
             key={i}
-            title={el}
-            checked={false}
+            title={el.split('_').join(' ')}
+            checked={
+              i == 0 || newList.identefier == el
+                ? true
+                : false
+            }
             onCheckList={onCheckList}
           />
         );
@@ -37,6 +50,8 @@ export default function SavePopup({
         heading={heading}
         description={description}
         image={image}
+        onCreateNewList={handleCreateNewList}
+        setIsSavePopupOpen={setIsSavePopupOpen}
       />
     </div>
   );
