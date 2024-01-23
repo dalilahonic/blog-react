@@ -19,7 +19,6 @@ export default function SavePopup({
 
   const lists = useSelector((state) => state.readingList);
 
-  console.log(newList);
   function handleCreateNewList(obj) {
     setNewList(obj);
   }
@@ -30,7 +29,6 @@ export default function SavePopup({
       className={styles.popup}
     >
       {Object.keys(lists).map((el, i) => {
-        console.log(newList.identefier, el);
         return (
           <ListItem
             key={i}

@@ -15,6 +15,14 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
+    'react/prop-types': [
+      'warn',
+      {
+        ignore: ['ignore'],
+        customValidators: ['customValidator'],
+        skipUndeclared: true,
+      },
+    ],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

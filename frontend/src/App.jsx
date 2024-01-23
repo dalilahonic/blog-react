@@ -33,11 +33,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const state = useSelector((state) => state.readingList);
-  console.log(state);
   const dispatch = useDispatch();
-
-  console.log(state);
 
   useEffect(() => {
     fetch('http://localhost:1337/api/posts?populate=deep')

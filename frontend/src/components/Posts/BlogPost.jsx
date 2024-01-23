@@ -8,7 +8,7 @@ import {
   readingListActions,
 } from '../../store';
 import getLink from '../../utils/getLink';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SavePopup from './SavePopup';
 
 export default function BlogPost({
@@ -21,25 +21,28 @@ export default function BlogPost({
   saved,
   link,
 }) {
-  const [isSavePopupOpen, setIsSavePopupOpen] =
-    useState(false);
-
-  useEffect(() => {
-    if (isSavePopupOpen) {
-      setTimeout(() => {
-        setIsSavePopupOpen(false);
-      }, 2000);
-    }
-  }, [isSavePopupOpen]);
-
+  const popupRef = useRef(null);
   const navigate = useNavigate();
   const darkTheme = useSelector(
     (state) => state.theme.darkThemes
   );
   const dispatch = useDispatch();
+  const isLoggedIn = localStorage.getItem('isUserLoggedIn');
+  const [isSavePopupOpen, setIsSavePopupOpen] =
+    useState(false);
 
-  const list = useSelector((state) => state.readingList);
-  console.log(list);
+  useEffect(() => {
+    function handleOutsideClick(e) {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(e.target)
+      ) {
+        setIsSavePopupOpen(false);
+      }
+    }
+
+    document.addEventListener('click', handleOutsideClick);
+  }, []);
 
   function addToReadingList(e) {
     e.stopPropagation();
@@ -56,8 +59,6 @@ export default function BlogPost({
     dispatch(postsActions.removeFromSaved({ heading }));
   }
 
-  const isLoggedIn = localStorage.getItem('isUserLoggedIn');
-
   function handleClick() {
     if (from) {
       window.location.href = link;
@@ -67,8 +68,9 @@ export default function BlogPost({
   }
 
   function handleCheckList(checked, listName) {
+    console.log('evo');
     if (checked) {
-      let camelListName = listName.split(' ').join('_');
+      let underscoreList = listName.split(' ').join('_');
 
       const obj = {
         heading,
@@ -79,7 +81,13 @@ export default function BlogPost({
       dispatch(
         readingListActions.addToReadingList({
           obj,
-          listName: camelListName || 'Reading_List',
+          listName: underscoreList || 'Reading_List',
+        })
+      );
+    } else if (!checked) {
+      dispatch(
+        readingListActions.removeFromReadingList({
+          heading,
         })
       );
     }
@@ -87,6 +95,7 @@ export default function BlogPost({
 
   return (
     <div
+      ref={popupRef}
       onClick={handleClick}
       className={`${styles.blogCard} ${
         darkTheme ? styles.dark : styles.light

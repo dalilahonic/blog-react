@@ -114,11 +114,12 @@ const readingListSlice = createSlice({
       let newState = { ...state };
 
       newState = Object.keys(newState).forEach((key) => {
-        return (newState[key].list = newState[
-          key
-        ].list.filter(
+        newState[key].list = newState[key].list.filter(
           (el) => el.heading !== action.payload.heading
-        ));
+        );
+
+        newState[key].storiesCount =
+          newState[key].list.length;
       });
 
       return newState;

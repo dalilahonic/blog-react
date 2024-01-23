@@ -1,14 +1,13 @@
 import { useParams } from 'react-router';
 import styles from './ReadingList.module.css';
 import OptionsSvg from './OptionsSvg';
-import { useSelector } from 'react-redux';
 
-export default function ReadingList({ title, list }) {
+export default function ReadingList({
+  title,
+  list,
+  count,
+}) {
   const params = useParams().username;
-
-  const savedArticles = useSelector(
-    (state) => state.readingList.readingList.list
-  );
 
   return (
     <div className={styles.readingList}>
@@ -24,11 +23,9 @@ export default function ReadingList({ title, list }) {
           <p>{params}</p>
         </div>
         <div className={styles.reading}>
-          <h3>{title}</h3>
+          <h3>{title.split('_').join(' ')}</h3>
           <p>
-            {list.storiesCount == 0
-              ? 'No stories'
-              : list.storiesCount + ' stories'}
+            {count == 0 ? 'No stories' : count + ' stories'}
           </p>
 
           <OptionsSvg />
@@ -36,32 +33,23 @@ export default function ReadingList({ title, list }) {
       </div>
       <div className={styles.articles}>
         <div>
-          {savedArticles[0] && (
+          {list[0] && (
             <img
-              src={
-                'http://localhost:1337' +
-                savedArticles[0]?.image
-              }
+              src={'http://localhost:1337' + list[0]?.image}
             />
           )}
         </div>
         <div>
-          {savedArticles[1] && (
+          {list[1] && (
             <img
-              src={
-                'http://localhost:1337' +
-                savedArticles[1]?.image
-              }
+              src={'http://localhost:1337' + list[1]?.image}
             />
           )}
         </div>
         <div>
-          {savedArticles[2] && (
+          {list[2] && (
             <img
-              src={
-                'http://localhost:1337' +
-                savedArticles[2]?.image
-              }
+              src={'http://localhost:1337' + list[2]?.image}
             />
           )}
         </div>

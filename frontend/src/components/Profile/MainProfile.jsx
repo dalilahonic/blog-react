@@ -11,6 +11,8 @@ export default function MainProfile() {
   );
   const lists = useSelector((state) => state.readingList);
 
+  console.log(lists);
+
   return (
     <div
       className={`${styles.profileMain} ${
@@ -32,7 +34,8 @@ export default function MainProfile() {
                 <ReadingList
                   key={i}
                   title={list[0]}
-                  list={list[1]}
+                  list={list[1].list}
+                  count={list[1].storiesCount}
                 />
               );
             })}
