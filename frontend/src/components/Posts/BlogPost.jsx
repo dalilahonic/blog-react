@@ -8,7 +8,12 @@ import {
   readingListActions,
 } from '../../store';
 import getLink from '../../utils/getLink';
-import { useEffect, useRef, useState } from 'react';
+import {
+  Children,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import SavePopup from './SavePopup';
 
 export default function BlogPost({
@@ -31,6 +36,7 @@ export default function BlogPost({
   const [isSavePopupOpen, setIsSavePopupOpen] =
     useState(false);
 
+  // handle clicks outisde of BlogPost component - close the SavePopupComponent
   useEffect(() => {
     function handleOutsideClick(e) {
       if (
@@ -44,21 +50,7 @@ export default function BlogPost({
     document.addEventListener('click', handleOutsideClick);
   }, []);
 
-  function addToReadingList(e) {
-    e.stopPropagation();
-    setIsSavePopupOpen(true);
-    dispatch(postsActions.saveArticle({ heading }));
-  }
-
-  function removeFromReadingList(e) {
-    e.stopPropagation();
-    setIsSavePopupOpen(false);
-    dispatch(
-      readingListActions.removeFromReadingList({ heading })
-    );
-    dispatch(postsActions.removeFromSaved({ heading }));
-  }
-
+  //handle clicks on BlogPost component - navigate to article page
   function handleClick() {
     if (from) {
       window.location.href = link;
@@ -67,8 +59,23 @@ export default function BlogPost({
     }
   }
 
+  function handleSave(e) {
+    e.stopPropagation();
+    setIsSavePopupOpen(true);
+    dispatch(postsActions.saveArticle({ heading }));
+  }
+
+  function handleUnsave(e) {
+    e.stopPropagation();
+    setIsSavePopupOpen(false);
+    dispatch(
+      readingListActions.removeFromReadingList({ heading })
+    );
+    dispatch(postsActions.removeFromSaved({ heading }));
+  }
+
   function handleCheckList(checked, listName) {
-    console.log('evo');
+    console.log(checked, listName);
     if (checked) {
       let underscoreList = listName.split(' ').join('_');
 
@@ -113,13 +120,13 @@ export default function BlogPost({
             (!saved ? (
               <BookmarkBorderIcon
                 className={styles.save}
-                onClick={(e) => addToReadingList(e)}
+                onClick={(e) => handleSave(e)}
               />
             ) : (
               <>
                 <BookmarkIcon
                   className={styles.save}
-                  onClick={(e) => removeFromReadingList(e)}
+                  onClick={(e) => handleUnsave(e)}
                 />
                 {isSavePopupOpen && (
                   <SavePopup

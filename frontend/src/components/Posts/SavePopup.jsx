@@ -13,6 +13,7 @@ export default function SavePopup({
 }) {
   const [newList, setNewList] = useState({});
 
+  // when you click on the Savepop component it doesn't lead you to Article page
   function handleClick(e) {
     e.stopPropagation();
   }
