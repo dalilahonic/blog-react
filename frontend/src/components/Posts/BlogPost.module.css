@@ -59,18 +59,18 @@ div.links::before {
   position: absolute;
   content: '';
   width: 40%;
-  height: 3px;
+  height: 1px;
   top: 50%;
   left: 50%;
   transform: translateX(-60%);
 }
 
-.light div.infoContainer p:first-of-type::after,
+.light div.infoContainer div p:first-of-type::after,
 .light div.links::before {
-  background-color: #d8d7d8;
+  background-color: #deddde;
 }
 
-.dark div.infoContainer p:first-of-type::after,
+.dark div.infoContainer div p:first-of-type::after,
 .dark div.links::before {
   background-color: #383639;
 }

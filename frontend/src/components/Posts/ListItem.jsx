@@ -12,8 +12,6 @@ export default function ListItem({
     setIsChecked((prev) => !prev);
   }
 
-  console.log(title, checked);
-
   useEffect(() => {
     onCheckList(isChecked, title);
   }, [isChecked, checked, title]);

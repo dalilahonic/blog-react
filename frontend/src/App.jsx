@@ -6,7 +6,7 @@ import {
 import Home from './pages/Home';
 import Article from './pages/Article';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   postsActions,
   speakingActions,

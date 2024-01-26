@@ -8,12 +8,7 @@ import {
   readingListActions,
 } from '../../store';
 import getLink from '../../utils/getLink';
-import {
-  Children,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SavePopup from './SavePopup';
 
 export default function BlogPost({
@@ -29,7 +24,7 @@ export default function BlogPost({
   const popupRef = useRef(null);
   const navigate = useNavigate();
   const darkTheme = useSelector(
-    (state) => state.theme.darkThemes
+    (state) => state.theme.darkTheme
   );
   const dispatch = useDispatch();
   const isLoggedIn = localStorage.getItem('isUserLoggedIn');
@@ -99,6 +94,9 @@ export default function BlogPost({
       );
     }
   }
+
+  const lists = useSelector((state) => state.readingList);
+  console.log(lists);
 
   return (
     <div
