@@ -30,15 +30,12 @@ export default function SavePopup({
       className={styles.popup}
     >
       {Object.keys(lists).map((el, i) => {
+        console.log(el);
         return (
           <ListItem
             key={i}
             title={el.split('_').join(' ')}
-            checked={
-              i == 0 || newList.identefier == el
-                ? true
-                : false
-            }
+            checked={el === 'Reading_List' ? true : false}
             onCheckList={onCheckList}
           />
         );

@@ -70,7 +70,6 @@ export default function BlogPost({
   }
 
   function handleCheckList(checked, listName) {
-    console.log(checked, listName);
     if (checked) {
       let underscoreList = listName.split(' ').join('_');
 
@@ -80,12 +79,14 @@ export default function BlogPost({
         image: image.url,
       };
 
-      dispatch(
-        readingListActions.addToReadingList({
-          obj,
-          listName: underscoreList || 'Reading_List',
-        })
-      );
+      setTimeout(() => {
+        dispatch(
+          readingListActions.addToReadingList({
+            obj,
+            listName: underscoreList || 'Reading_List',
+          })
+        );
+      }, 10);
     } else if (!checked) {
       dispatch(
         readingListActions.removeFromReadingList({
@@ -96,8 +97,8 @@ export default function BlogPost({
   }
 
   const lists = useSelector((state) => state.readingList);
-  console.log(lists);
 
+  console.log(lists);
   return (
     <div
       ref={popupRef}
@@ -126,6 +127,7 @@ export default function BlogPost({
                   className={styles.save}
                   onClick={(e) => handleUnsave(e)}
                 />
+
                 {isSavePopupOpen && (
                   <SavePopup
                     heading={heading}
