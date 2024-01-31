@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import styles from './Section.module.css';
-import BlogPost from './BlogPost';
+import BlogPost from './Blog Post/BlogPost';
+
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 import SearchInput from './SeachInput';

@@ -4,6 +4,7 @@ import Navigation from '../components/Main Page/Header/Navigation';
 import Section from '../components/Posts/Section';
 import styles from './Posts.module.css';
 import { useEffect, useState } from 'react';
+import filterArticles from '../utils/filterArticles';
 
 export default function Posts() {
   const darkTheme = useSelector(
@@ -13,23 +14,17 @@ export default function Posts() {
 
   const data = useSelector((state) => state.posts);
 
-  const fromMyBlog = data?.filter((article) => {
-    return (
-      !article.attributes.fromElsewhere &&
-      article.attributes.heading
-        .toLowerCase()
-        .includes(inputValue.toLowerCase())
-    );
-  });
+  const fromMyBlog = filterArticles(
+    data,
+    false,
+    inputValue
+  );
 
-  const fromElsewhere = data?.filter((article) => {
-    return (
-      article.attributes.fromElsewhere &&
-      article.attributes.heading
-        .toLowerCase()
-        .includes(inputValue.toLowerCase())
-    );
-  });
+  const fromElsewhere = filterArticles(
+    data,
+    true,
+    inputValue
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -63,7 +58,6 @@ export default function Posts() {
           heading='Articles from elsewhere'
           data={fromElsewhere}
         />
-        <Section />
       </div>
     </>
   );

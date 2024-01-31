@@ -1,17 +1,14 @@
 import { useSelector } from 'react-redux';
 import styles from './MainProfile.module.css';
 import { useParams } from 'react-router';
-import ReadingList from './ReadingList';
 import ProfileRight from './ProfileRight';
+import ProfileLeft from './ProfileLeft';
 
 export default function MainProfile() {
   const params = useParams().username;
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
-  const lists = useSelector((state) => state.readingList);
-
-  console.log(lists);
 
   return (
     <div
@@ -23,24 +20,7 @@ export default function MainProfile() {
         <h1>{params}</h1>
       </div>
       <div className={styles.profile}>
-        <div className={styles.profileLeft}>
-          <div className={styles.tabs}>
-            <div className={styles.tab}>Home</div>
-            <div className={styles.tab}>About</div>
-          </div>
-          <div className={styles.homeMain}>
-            {Object.entries(lists).map((list, i) => {
-              return (
-                <ReadingList
-                  key={i}
-                  title={list[0]}
-                  list={list[1].list}
-                  count={list[1].storiesCount}
-                />
-              );
-            })}
-          </div>
-        </div>
+        <ProfileLeft />
         <ProfileRight />
       </div>
     </div>

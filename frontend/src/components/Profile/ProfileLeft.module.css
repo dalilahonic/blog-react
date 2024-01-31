@@ -1,0 +1,22 @@
+div.profileLeft {
+  width: 70%;
+  height: 100%;
+}
+
+.dark div.tabs {
+  color: white;
+}
+
+div.tabs {
+  display: flex;
+  gap: 10px;
+  font-size: 18px;
+}
+
+div.tab {
+  border-bottom: 1px solid blue;
+}
+
+div.homeMain {
+  padding: 4% 2%;
+}

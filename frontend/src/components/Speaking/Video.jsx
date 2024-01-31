@@ -33,7 +33,6 @@ export default function Video({ activeTab }) {
           color='inherit'
         />
       )}
-
       <iframe
         id='js-featured-video'
         title='Video player: Limitation breeds creativity'

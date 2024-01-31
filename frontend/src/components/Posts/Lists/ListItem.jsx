@@ -14,7 +14,7 @@ export default function ListItem({
 
   useEffect(() => {
     onCheckList(isChecked, title);
-  }, [isChecked, checked, title]);
+  }, [isChecked, checked, title, onCheckList]);
 
   return (
     <div className={styles.listItem}>

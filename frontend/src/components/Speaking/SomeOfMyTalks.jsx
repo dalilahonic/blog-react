@@ -37,7 +37,7 @@ export default function SomeOfMyTalks() {
       }`}
     >
       <div className={styles.talksHeading}>
-        <h1>Here's some of my talks</h1>
+        <h1>Here&apos;s some of my talks</h1>
       </div>
       <div className={styles.talksInner}>
         <div className={styles.tabs}>

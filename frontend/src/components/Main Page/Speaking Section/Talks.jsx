@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Talks.module.css';
 import CardSpeaking from './CardSpeaking';
 import { useSelector } from 'react-redux';

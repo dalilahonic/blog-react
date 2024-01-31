@@ -22,7 +22,7 @@ export default function Hero() {
         }`}
       >
         <div className={styles.rightContent}>
-          <p>👋 Hi, I'm Dalila</p>
+          <p>👋 Hi, I&apos;m Dalila</p>
           <p>
             I like making <span>fun </span>, interactive
             things with code. I also <span>talk </span> &

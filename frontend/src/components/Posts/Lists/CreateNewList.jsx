@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import styles from './ListItem.module.css';
-import Popup from './Popup';
+import Popup from '../Popup/Popup';
 
 export default function CreateNewList({
   title,
   heading,
   description,
   image,
-  onCreateNewList,
   setIsSavePopupOpen,
 }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -26,7 +25,6 @@ export default function CreateNewList({
           heading={heading}
           description={description}
           image={image}
-          onCreateNewList={onCreateNewList}
           setIsSavePopupOpen={setIsSavePopupOpen}
         />
       )}

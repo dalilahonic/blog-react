@@ -23,7 +23,7 @@ div.registerCard {
   border-radius: 4px;
 }
 
-div.registerCard div {
+/* div.registerCard div {
   width: 100%;
 }
 
@@ -55,7 +55,7 @@ div.registerCard button {
 
 div.registerCard button:hover {
   background-color: var(--color-dark-no-swop);
-}
+} */
 
 div.dontHaveAccount {
   padding: 2%;
