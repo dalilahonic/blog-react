@@ -1,14 +1,17 @@
 import styles from './Talks.module.css';
 import CardSpeaking from './CardSpeaking';
 import { useSelector } from 'react-redux';
+import useFetch from '../../../utils/useFetch';
+import { useState } from 'react';
 
 export default function Talks() {
-  const speakingCards = useSelector(
-    (state) => state.speaking
-  );
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
+
+  const [speeches, setSpeeches] = useState([]);
+
+  useFetch('http://localhost:3000/speeches', setSpeeches);
 
   return (
     <div
@@ -16,13 +19,13 @@ export default function Talks() {
         darkTheme ? styles.dark : styles.light
       }`}
     >
-      {speakingCards?.map((card) => {
+      {speeches?.map((card) => {
         return (
           <CardSpeaking
-            key={card.id}
-            heading={card.attributes.heading}
-            description={card.attributes.description}
-            type={card.attributes.type}
+            key={card._id}
+            title={card.title}
+            description={card.description}
+            type={card.type}
           />
         );
       })}

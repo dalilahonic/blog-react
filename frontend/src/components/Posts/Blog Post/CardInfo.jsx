@@ -11,7 +11,6 @@ import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 
 export default function CardInfo({
-  image,
   saved,
   heading,
   description,

@@ -5,6 +5,7 @@ import Section from '../components/Posts/Section';
 import styles from './Posts.module.css';
 import { useEffect, useState } from 'react';
 import filterArticles from '../utils/filterArticles';
+import useFetch from '../utils/useFetch';
 
 export default function Posts() {
   const [data, setData] = useState([]);
@@ -16,21 +17,7 @@ export default function Posts() {
     (state) => state.theme.darkTheme
   );
 
-  useEffect(() => {
-    fetch('http://localhost:3000/articles')
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Failed to fetch articles');
-        }
-        return res.json();
-      })
-      .then((articlesData) => {
-        setData(articlesData.articles);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  useFetch('http://localhost:3000/articles', setData);
 
   useEffect(() => {
     if (data?.length > 1) {

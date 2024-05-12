@@ -1,18 +1,25 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './CardSpeaking.module.css';
 import { useSelector } from 'react-redux';
+import getLink from '../../../utils/getLink';
 
 export default function CardSpeaking({
-  heading,
+  title,
   description,
   type,
 }) {
+  const navigate = useNavigate();
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
 
+  function handleClick() {
+    navigate(`/speaking/${getLink(title)}`);
+  }
+
   return (
     <div
+      onClick={() => handleClick()}
       className={`${styles.card} ${
         darkTheme ? styles.dark : styles.light
       }`}
@@ -23,7 +30,7 @@ export default function CardSpeaking({
       <div className={styles.divider}></div>
       <div className={styles.content}>
         <Link>
-          <h2>{heading}</h2>
+          <h2>{title}</h2>
           <p>{description}</p>
         </Link>
       </div>

@@ -15,7 +15,7 @@ export default function Footer() {
     >
       <div className={styles.contact}>
         <div className={styles.contactLeft}>
-          <h1>I'm always up for a chat</h1>
+          <h1>I&apos;m always up for a chat</h1>
           <p>
             Pop me an email at @dalilahonic1@gmail.com or
             give me a shout on social media.

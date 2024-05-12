@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 import styles from './Content.module.css';
 import { useParams } from 'react-router';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
+import useFetch from '../../utils/useFetch';
 
 export default function Content() {
   const darkTheme = useSelector(
@@ -11,21 +12,10 @@ export default function Content() {
 
   const { articleTitle } = useParams();
 
-  useEffect(() => {
-    fetch(`http://localhost:3000/articles/${articleTitle}`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Failed to fetch');
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setArticle(data.article);
-      })
-      .catch((err) => console.log(err));
-  }, [articleTitle]);
-
-  console.log(article);
+  useFetch(
+    `http://localhost:3000/articles/${articleTitle}`,
+    setArticle
+  );
 
   return (
     <section>

@@ -2,15 +2,16 @@ import styles from './Writing.module.css';
 import { useSelector } from 'react-redux';
 import Post from './Post';
 import VisitButton from './VisitButton';
+import { useState } from 'react';
+import useFetch from '../../../utils/useFetch';
 
 export default function Writing() {
+  const [data, setData] = useState([]);
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
-  const data = useSelector((state) => state.posts)?.slice(
-    0,
-    3
-  );
+
+  useFetch('http://localhost:3000/limitedArticles', setData);
 
   return (
     <section>
@@ -26,15 +27,15 @@ export default function Writing() {
         >
           <h1>Writing.</h1>
 
-          {data?.map((post, i) => {
+          {data?.map((post) => {
             return (
               <Post
-                key={i}
-                heading={post.attributes?.heading}
-                content={post.attributes?.content}
-                tags={post.attributes?.tags?.tags}
-                from={post.attributes?.from}
-                link={post.attributes?.link}
+                key={post._id}
+                title={post.title}
+                tags={post.tags}
+                from={post.sourceBlogName}
+                link={post.linkToArticle}
+                description={post.description}
               />
             );
           })}

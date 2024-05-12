@@ -25,7 +25,6 @@ export default function Section({
     onChangeInput(value);
   }
 
-
   return (
     <div
       className={`${styles.section} ${
@@ -57,7 +56,7 @@ export default function Section({
               heading={post.title}
               date={post.date}
               description={post.description}
-              // image={post.img.data?.attributes}
+              image={post.image}
               from={post.sourceBlogName}
               tags={post.tags}
               link={post.linkToArticle}

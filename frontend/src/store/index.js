@@ -19,9 +19,6 @@ const articlesSlice = createSlice({
   name: 'articles',
   initialState: null,
   reducers: {
-    addData(_, action) {
-      return action.payload;
-    },
     saveArticle(state, action) {
       const targetIndex = state.findIndex(
         (obj) =>
@@ -38,16 +35,6 @@ const articlesSlice = createSlice({
       );
       state[targetIndex].attributes.saved = false;
       return state;
-    },
-  },
-});
-
-const speakingSlice = createSlice({
-  name: 'speaking',
-  initialState: null,
-  reducers: {
-    addData(_, action) {
-      return action.payload;
     },
   },
 });
@@ -133,7 +120,6 @@ const store = configureStore({
   reducer: {
     theme: themeSlice.reducer,
     posts: articlesSlice.reducer,
-    speaking: speakingSlice.reducer,
     users: usersSlice.reducer,
     readingList: readingListSlice.reducer,
   },
@@ -141,7 +127,6 @@ const store = configureStore({
 
 export const themeActions = themeSlice.actions;
 export const postsActions = articlesSlice.actions;
-export const speakingActions = speakingSlice.actions;
 export const userActions = usersSlice.actions;
 export const readingListActions = readingListSlice.actions;
 

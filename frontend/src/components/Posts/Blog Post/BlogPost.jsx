@@ -47,6 +47,7 @@ export default function BlogPost({
     }
   }
 
+  console.log(image);
   return (
     <div
       ref={popupRef}
@@ -56,17 +57,13 @@ export default function BlogPost({
       }`}
     >
       <div className={styles.imageContainer}>
-        <img
-          className={styles.mainImage}
-          src={`http://localhost:1337${image?.url}`}
-        />
+        <img className={styles.mainImage} src={image} />
       </div>
       <CardInfo
         saved={saved}
         heading={heading}
         description={description}
         date={date}
-        // image={image}
         isSavePopupOpen={isSavePopupOpen}
         setIsSavePopupOpen={setIsSavePopupOpen}
       />

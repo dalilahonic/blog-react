@@ -3,14 +3,13 @@ import styles from './Post.module.css';
 import { useSelector } from 'react-redux';
 import DotsSvg from '../../../assets/dots.svg';
 import getLink from '../../../utils/getLink';
-import getDescription from '../../../utils/getDescription';
 
 export default function Post({
-  heading,
-  content,
+  title,
   tags,
-  from,
-  link,
+  sourceBlogName,
+  linkToArtcile,
+  description,
 }) {
   const navigate = useNavigate();
   const darkTheme = useSelector(
@@ -18,9 +17,9 @@ export default function Post({
   );
 
   function handleClick() {
-    if (tags) navigate(`/posts/${getLink(heading)}`);
+    if (tags) navigate(`/posts/${getLink(title)}`);
     else {
-      window.location.href = link;
+      window.location.href = linkToArtcile;
     }
   }
 
@@ -33,15 +32,15 @@ export default function Post({
     >
       <div className={styles.divider}>
         <span>
-          <img src={DotsSvg} alt='Dots'></img>
+          <img src={DotsSvg} alt='Dots' />
         </span>
       </div>
       <div className={styles.postBody}>
-        <Link>{heading}</Link>
-        <p>{getDescription(content)}...</p>
+        <Link>{title}</Link>
+        <p>{description}...</p>
         <footer>
-          <Link to={tags ? '/posts' : link}>
-            {tags ? 'Blog' : from}
+          <Link to={tags ? '/posts' : linkToArtcile}>
+            {tags ? 'Blog' : sourceBlogName}
           </Link>
           <Link>Read post</Link>
         </footer>
