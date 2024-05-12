@@ -5,23 +5,28 @@ import intro from '../../assets/intro.svg';
 import calendar from '../../assets/calendar.svg';
 import time from '../../assets/time.svg';
 import { Link } from 'react-router-dom';
-import findTargetElement from '../../utils/findTargetElement';
 
-export default function Heading({
-  text,
-  title,
-  description,
-  classN,
-}) {
-  const data = useSelector((state) => state.posts);
+import { useEffect, useState } from 'react';
+
+export default function Heading({ text, title, classN }) {
+  const [article, setArticle] = useState({});
+
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
-  const { articleId } = useParams();
+  const { articleTitle } = useParams();
 
-  const target = findTargetElement(data, articleId);
-
-  let article = target?.attributes || [];
+  useEffect(() => {
+    fetch(`http://localhost:3000/articles/${articleTitle}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch');
+        }
+        return res.json();
+      })
+      .then((data) => setArticle(data.article))
+      .catch((err) => console.log(err));
+  }, [articleTitle]);
 
   return (
     <div
@@ -37,7 +42,7 @@ export default function Heading({
             <div
               className={`${styles.logoHeading} ${styles[classN]}`}
             >
-              <h1>{article?.heading || title}</h1>
+              <h1>{article?.title || title}</h1>
               {text == 'writing' && (
                 <>
                   <p>
@@ -47,8 +52,8 @@ export default function Heading({
                     care and mental health.
                   </p>
                   <p>
-                    I'm trying to be less precious about
-                    writing, so I've started a
+                    I&apos;m trying to be less precious
+                    about writing, so I&apos;ve started a
                     <Link to='/tags/notes/'>
                       snippets and notes
                     </Link>
@@ -62,7 +67,7 @@ export default function Heading({
               <div className={styles.logoSummary}>
                 <div>
                   <img src={intro}></img>
-                  {article?.tags?.tags?.map((tag, i) => {
+                  {article?.tags?.map((tag, i) => {
                     return (
                       <p className={styles.tags} key={i}>
                         {tag}&nbsp;

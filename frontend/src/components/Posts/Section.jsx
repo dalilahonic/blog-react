@@ -25,6 +25,7 @@ export default function Section({
     onChangeInput(value);
   }
 
+
   return (
     <div
       className={`${styles.section} ${
@@ -51,15 +52,15 @@ export default function Section({
         {data?.map((post) => {
           return (
             <BlogPost
-              key={post.id}
-              saved={post.attributes.saved}
-              heading={post.attributes.heading}
-              date={post.attributes.date}
-              description={post.attributes.description}
-              image={post.attributes.img.data?.attributes}
-              from={post.attributes.from}
-              tags={post.attributes?.tags?.tags}
-              link={post.attributes.link}
+              key={post._id}
+              // saved={post.saved}
+              heading={post.title}
+              date={post.date}
+              description={post.description}
+              // image={post.img.data?.attributes}
+              from={post.sourceBlogName}
+              tags={post.tags}
+              link={post.linkToArticle}
             />
           );
         })}

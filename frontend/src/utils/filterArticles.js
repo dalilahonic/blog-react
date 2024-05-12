@@ -1,11 +1,9 @@
 function filterArticles(data, isFromElsewhere, inputValue) {
   return data?.filter((article) => {
-    const headingLower =
-      article.attributes.heading.toLowerCase();
+    const headingLower = article.title.toLowerCase();
 
     return (
-      article.attributes.fromElsewhere ===
-        isFromElsewhere &&
+      article.isFromExternalSource === isFromElsewhere &&
       headingLower.includes(inputValue.toLowerCase())
     );
   });

@@ -66,7 +66,7 @@ export default function BlogPost({
         heading={heading}
         description={description}
         date={date}
-        image={image}
+        // image={image}
         isSavePopupOpen={isSavePopupOpen}
         setIsSavePopupOpen={setIsSavePopupOpen}
       />

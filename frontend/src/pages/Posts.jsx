@@ -7,24 +7,49 @@ import { useEffect, useState } from 'react';
 import filterArticles from '../utils/filterArticles';
 
 export default function Posts() {
+  const [data, setData] = useState([]);
+  const [fromMyBlog, setFromMyBlog] = useState([]);
+  const [fromElsewhere, setFromElsewhere] = useState([]);
+
+  const [inputValue, setInputValue] = useState('');
   const darkTheme = useSelector(
     (state) => state.theme.darkTheme
   );
-  const [inputValue, setInputValue] = useState('');
 
-  const data = useSelector((state) => state.posts);
+  useEffect(() => {
+    fetch('http://localhost:3000/articles')
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch articles');
+        }
+        return res.json();
+      })
+      .then((articlesData) => {
+        setData(articlesData.articles);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-  const fromMyBlog = filterArticles(
-    data,
-    false,
-    inputValue
-  );
+  useEffect(() => {
+    if (data?.length > 1) {
+      const fromMyBlogArticles = filterArticles(
+        data,
+        false,
+        inputValue
+      );
 
-  const fromElsewhere = filterArticles(
-    data,
-    true,
-    inputValue
-  );
+      const fromElsewhereArticles = filterArticles(
+        data,
+        true,
+        inputValue
+      );
+
+      setFromMyBlog(fromMyBlogArticles);
+      setFromElsewhere(fromElsewhereArticles);
+    }
+  }, [data, inputValue]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

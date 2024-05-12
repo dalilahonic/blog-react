@@ -7,6 +7,8 @@ import {
   readingListActions,
 } from '../../../store';
 import { useDispatch } from 'react-redux';
+import { format } from 'date-fns';
+import { useEffect, useState } from 'react';
 
 export default function CardInfo({
   image,
@@ -20,6 +22,18 @@ export default function CardInfo({
   const isLoggedIn = localStorage.getItem('isUserLoggedIn');
 
   const dispatch = useDispatch();
+
+  const [formattedDate, setFormattedDate] = useState('');
+
+  useEffect(() => {
+    const newDate = new Date(date);
+
+    const formattedDateString = format(
+      newDate,
+      "do 'of' MMMM yyyy"
+    );
+    setFormattedDate(formattedDateString);
+  }, [date]);
 
   function handleSave(e) {
     e.stopPropagation();
@@ -90,7 +104,7 @@ export default function CardInfo({
               )}
             </>
           ))}
-        <p>{date}</p>
+        <p>{formattedDate}</p>
         <h1>{heading}</h1>
         <p>{description}</p>
       </div>
