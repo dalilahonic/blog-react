@@ -1,5 +1,6 @@
 import Article from '../models/Article.js';
 import Speaking from '../models/Speaking.js';
+import User from '../models/User.js';
 
 export const getArticles = async (req, res, next) => {
   try {
@@ -74,7 +75,61 @@ export const getSpeech = async (req, res, next) => {
   }
 };
 
-export const postSignup = async (req, res, next) => {
-  const { username, email, password, confirmPassword } =
-    req.body;
+export const postSignUp = async (req, res, next) => {
+  const { username, email, password } = req.body;
+
+  console.log(username);
+
+  const user = new User({ username, password, email });
+
+  await user.save();
+
+  // const doesUsernameExist = await User.findOne({
+  //   username,
+  // });
+
+  // if (doesUsernameExist) {
+  //   throw new Error(
+  //     'An account with this username already exists. Please sign in or use a different email.'
+  //   );
+  // }
+
+  // const doesAccountExist = await User.findOne({ email });
+
+  // if (doesAccountExist) {
+  //   throw new Error(
+  //     'An account with this email already exists. Please sign in or use a different email.'
+  //   );
+  // }
+
+  // const hashedPassword = await bcrypt.hash(password, 12);
+
+  // const newUser = new User({
+  //   email,
+  //   username,
+  //   password: hashedPassword,
+  // });
+
+  // await newUser.save();
+  // console.log(username, password, email);
+
+  res.json({ message: 'User created' });
+};
+
+export const postSignIn = async (req, res, next) => {
+  const { email, password } = req.body;
+
+  console.log(email, password);
+
+  const user = await User.findOne({ email });
+
+  if (user) {
+    // copare password
+    // set logged in user
+    // return user
+  } else {
+    //error
+  }
+
+  res.json({ emm: 'da' });
 };
