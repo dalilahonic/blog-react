@@ -21,6 +21,8 @@ const userSchema = mongoose.Schema({
     minLength: 8,
     maxLength: 100,
   },
+  verificationCode: mongoose.Schema.Types.Mixed,
+  isVerified: { type: Boolean, default: false },
 });
 
 const User = mongoose.model('User', userSchema);

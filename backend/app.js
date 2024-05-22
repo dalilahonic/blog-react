@@ -15,6 +15,16 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(routes);
 
+app.use((err, req, res) => {
+  console.log('usli smo ovde' + err);
+
+  res.status(500).json({
+    success: false,
+    message: err.message,
+    error: err,
+  });
+});
+
 mongoose.connect(URI).then(() => {
   app.listen(3000);
 });

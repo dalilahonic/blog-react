@@ -17,15 +17,19 @@ export default function Heading({ text, title, classN }) {
   const { articleTitle } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/articles/${articleTitle}`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Failed to fetch');
-        }
-        return res.json();
-      })
-      .then((data) => setArticle(data.article))
-      .catch((err) => console.log(err));
+    if (articleTitle) {
+      fetch(
+        `http://localhost:3000/articles/${articleTitle}`
+      )
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error('Failed to fetch');
+          }
+          return res.json();
+        })
+        .then((data) => setArticle(data.article))
+        .catch((err) => console.log(err));
+    }
   }, [articleTitle]);
 
   return (

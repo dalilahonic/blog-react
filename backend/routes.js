@@ -5,8 +5,9 @@ import {
   getLimitedArticles,
   getSpeech,
   getSpeeches,
-  postSignIn,
-  postSignUp,
+  getTagedArticles,
+  postSignin,
+  postSignup,
 } from './controllers/index.js';
 import { body } from 'express-validator';
 
@@ -22,31 +23,47 @@ router.get('/speeches/:speechTitle', getSpeech);
 
 router.get('/speeches', getSpeeches);
 
+router.get('/tags/:tag', getTagedArticles);
+
 router.post(
   '/signup',
-  // [
-  //   body('email')
-  //     .notEmpty()
-  //     .withMessage(
-  //       'Please fill in all the required fields.'
-  //     )
-  //     .isEmail()
-  //     .withMessage('Please enter a valid email address.'),
-  //   body('password')
-  //     .isLength({ min: 8 })
-  //     .withMessage(
-  //       'Password must be at least 8 characters long'
-  //     ),
-  //   body('confirmPassword')
-  //     .custom((value, { req }) => {
-  //       if (value != req.password) {
-  //         return false;
-  //       }
-  //       return true;
-  //     })
-  //     .withMessage(`Passwords don't match`),
-  // ],
-  postSignUp
+  [
+    body('email')
+      .trim()
+      .normalizeEmail()
+      .notEmpty()
+      .withMessage(
+        'Please fill in all the required fields.'
+      )
+      .isEmail()
+      .withMessage('Please enter a valid email address.'),
+    body('password')
+      .trim()
+      .notEmpty()
+      .withMessage(
+        'Please fill in all the required fields.'
+      )
+      .isLength({ min: 8 })
+      .withMessage(
+        'Password must be at least 8 characters long'
+      ),
+    body('confirmPassword')
+      .custom((value, { req }) => {
+        if (value != req.password) {
+          return false;
+        }
+        return true;
+      })
+      .withMessage(`Passwords don't match`),
+    body('username')
+      .trim()
+      .notEmpty()
+      .withMessage(
+        'Please fill in all the required fields.'
+      )
+      .isLength({ min: 3 }),
+  ],
+  postSignup
 );
 
 router.post('/signin', [
@@ -58,7 +75,7 @@ router.post('/signin', [
   body('password').notEmpty(
     'Please fill all required fields'
   ),
-  postSignIn,
+  postSignin,
 ]);
 
 export default router;

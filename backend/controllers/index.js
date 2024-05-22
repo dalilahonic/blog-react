@@ -1,14 +1,21 @@
+import { validationResult } from 'express-validator';
 import Article from '../models/Article.js';
 import Speaking from '../models/Speaking.js';
 import User from '../models/User.js';
+import bcrypt from 'bcrypt';
+import crypto from 'crypto';
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const getArticles = async (req, res, next) => {
   try {
     const articles = await Article.find();
     res.status(200).json({ articles });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: error.message });
+    // next(error);
+    // res.status(500).json({ error: error.message });
   }
 };
 
@@ -41,8 +48,8 @@ export const getLimitedArticles = async (
     res.status(200).json({ articles });
     next();
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: error.message });
+    // next(error);
+    // res.status(500).json({ error: error.message });
   }
 };
 
@@ -52,7 +59,7 @@ export const getSpeeches = async (req, res, next) => {
 
     res.status(200).json({ speeches });
   } catch (error) {
-    console.log(error);
+    // next(error);
   }
 };
 
@@ -71,65 +78,175 @@ export const getSpeech = async (req, res, next) => {
 
     res.status(200).json({ speech, omg: 'da' });
   } catch (error) {
-    console.log(error);
+    // next(error);
   }
 };
 
-export const postSignUp = async (req, res, next) => {
-  const { username, email, password } = req.body;
+export const getTagedArticles = async (req, res, next) => {
+  try {
+    const { tag } = req.params;
 
-  console.log(username);
+    const articles = await Article.find({ tags: tag });
+    console.log(articles);
 
-  const user = new User({ username, password, email });
-
-  await user.save();
-
-  // const doesUsernameExist = await User.findOne({
-  //   username,
-  // });
-
-  // if (doesUsernameExist) {
-  //   throw new Error(
-  //     'An account with this username already exists. Please sign in or use a different email.'
-  //   );
-  // }
-
-  // const doesAccountExist = await User.findOne({ email });
-
-  // if (doesAccountExist) {
-  //   throw new Error(
-  //     'An account with this email already exists. Please sign in or use a different email.'
-  //   );
-  // }
-
-  // const hashedPassword = await bcrypt.hash(password, 12);
-
-  // const newUser = new User({
-  //   email,
-  //   username,
-  //   password: hashedPassword,
-  // });
-
-  // await newUser.save();
-  // console.log(username, password, email);
-
-  res.json({ message: 'User created' });
+    res.status(200).json({ articles });
+  } catch (err) {
+    next(err);
+  }
 };
 
-export const postSignIn = async (req, res, next) => {
-  const { email, password } = req.body;
+const tempUsers = new Map();
 
-  console.log(email, password);
+export const postSignup = async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      const newError = new Error('Validation error');
+      newError.statusCode(400);
+      throw newError;
+    }
+
+    const { username, email, password } = req.body;
+
+    const doesUsernameExist = await User.findOne({
+      username,
+    });
+
+    if (doesUsernameExist) {
+      throw new Error(
+        'An account with this username already exists. Please sign in or use a different email.'
+      );
+    }
+
+    const doesAccountExist = await User.findOne({ email });
+
+    if (doesAccountExist) {
+      throw new Error(
+        'An account with this email already exists. Please sign in or use a different email.'
+      );
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    const verificationCode = crypto
+      .randomBytes(3)
+      .toString('hex');
+
+    tempUsers.set(verificationCode, {
+      username,
+      email,
+      password: hashedPassword,
+      tokenExpiry: Date.now() + 3600000,
+    });
+
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
+      auth: {
+        user: 'dalilahonic1@gmail.com',
+        pass: process.env.APP_PASSWORD,
+      },
+    });
+
+    const mailOptions = {
+      from: 'dalilahonic1@gmail.com',
+      to: email,
+      subject: 'Verify your email address',
+      html: `
+    <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+      <div style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+        <h2 style="text-align: center; color: #4CAF50;">Verify your email address</h2>
+        <p>To finish setting up your account, we just need to make sure this email address is yours.</p>
+       
+        <p>To verify your email address use this security code: <strong>${verificationToken}</strong> </p>
+        <p>If you didn't request this code you can safely ignore this email. Someone else might have typed your email address by mistake </p>
+        <p>Thank you.</p>
+      </div>
+    </div>
+  `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(200).message({
+      message:
+        'Enter a code that has been sent to your email',
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const postVerifyEmail = async (req, res, next) => {
+  try {
+    const { verificationCode } = req.body;
+
+    const userData = tempUsers.get(verificationCode);
+
+    if (!userData) {
+      const newError = new Error(
+        'Invalid verification code'
+      );
+      newError.statusCode = 404;
+      throw newError;
+    }
+
+    if (Date.now() > userData.tokenExpiry) {
+      const newError = new Error('Code has expired');
+      newError.statusCode = 400;
+      throw newError;
+    }
+    const { username, email, password } = userData;
+
+    const newUser = new User({
+      username,
+      email,
+      password,
+    });
+
+    await newUser.save();
+
+    tempUsers.delete(verificationCode);
+
+    res
+      .status(201)
+      .json({ message: 'User created successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const postSignin = async (req, res, next) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    const validationError = new Error();
+    validationError.statusCode = 400;
+    throw validationError;
+  }
+
+  const { email, password } = req.body;
 
   const user = await User.findOne({ email });
 
-  if (user) {
-    // copare password
-    // set logged in user
-    // return user
-  } else {
-    //error
+  if (!user) {
+    const newError = new Error('Wrong email or password');
+    newError.statusCode = 401;
+    throw newError;
   }
 
-  res.json({ emm: 'da' });
+  const isPasswordValid = await bcrypt.compare(
+    password,
+    user.password
+  );
+
+  if (!isPasswordValid) {
+    const newError = new Error('Wrong email or password');
+    newError.statusCode = 401;
+    throw newError;
+  }
+
+  res.status(200).json({ message: 'Signin successful' });
 };

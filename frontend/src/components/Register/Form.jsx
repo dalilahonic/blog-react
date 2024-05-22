@@ -1,20 +1,17 @@
 import { useEffect, useState } from 'react';
-import { userActions } from '../../store';
-import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router';
 import styles from './Form.module.css';
 
 export default function Form() {
-  const pathname = useLocation().pathname;
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const pathname = useLocation().pathname;
 
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const [confirmPassword, setConfirmPassword] =
     useState('');
   const [userNameInput, setUserNameInput] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  // const [errorMessage, setErrorMessage] = useState('');
 
   function handleSignup(e) {
     e.preventDefault();
@@ -37,13 +34,15 @@ export default function Form() {
         }
         return res.json();
       })
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        navigate;
+      })
       .catch((error) => {
-        // setErrorMessage(error);
         console.log(error);
+        // setErrorMessage(error);
       });
   }
-
   function handleSignin(e) {
     e.preventDefault();
 
@@ -65,6 +64,10 @@ export default function Form() {
       })
       .then((data) => {
         console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+        // setErrorMessage(err);
       });
   }
 
@@ -74,9 +77,12 @@ export default function Form() {
   //     }
   //   }, [loggedInUser, navigate]);
 
-  //   useEffect(() => {
-  //     setEmailInput('');
-  //   }, [pathname]);
+  useEffect(() => {
+    setEmailInput('');
+    setPasswordInput('');
+    setConfirmPassword('');
+    setUserNameInput('');
+  }, [pathname]);
 
   return (
     <form
@@ -132,9 +138,9 @@ export default function Form() {
       <button>
         Sign {pathname === '/signup' ? 'up' : 'in'}
       </button>
-      {errorMessage && (
+      {/* {errorMessage && (
         <p className={styles.error}>{errorMessage}</p>
-      )}
+      )} */}
     </form>
   );
 }
