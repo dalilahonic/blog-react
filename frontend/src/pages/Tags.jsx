@@ -5,6 +5,7 @@ import styles from './Tags.module.css';
 import Section from '../components/Posts/Section';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import useFetch from '../utils/useFetch';
 
 export default function Tags() {
   const tag = useParams().tagId;
@@ -18,16 +19,7 @@ export default function Tags() {
     scrollTo(0, 0);
   });
 
-  useEffect(() => {
-    fetch(`http://localhost:3000/tags/${tag}`)
-      .then((res) => res.json())
-      .then((articles) => {
-        setData(articles.articles);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [tag]);
+  useFetch(`http://localhost:3000/tags/${tag}`, setData);
 
   return (
     <div

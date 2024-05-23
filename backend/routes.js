@@ -8,6 +8,7 @@ import {
   getTagedArticles,
   postSignin,
   postSignup,
+  postVerifyEmail,
 } from './controllers/index.js';
 import { body } from 'express-validator';
 
@@ -28,6 +29,16 @@ router.get('/tags/:tag', getTagedArticles);
 router.post(
   '/signup',
   [
+    body('username')
+      .trim()
+      .notEmpty()
+      .withMessage(
+        'Please fill in all the required fields.'
+      )
+      .isLength({ min: 3 })
+      .withMessage(
+        'Username must be at least 3 characters long'
+      ),
     body('email')
       .trim()
       .normalizeEmail()
@@ -50,18 +61,11 @@ router.post(
     body('confirmPassword')
       .custom((value, { req }) => {
         if (value != req.password) {
-          return false;
+          return true;
         }
-        return true;
+        return false;
       })
       .withMessage(`Passwords don't match`),
-    body('username')
-      .trim()
-      .notEmpty()
-      .withMessage(
-        'Please fill in all the required fields.'
-      )
-      .isLength({ min: 3 }),
   ],
   postSignup
 );
@@ -77,5 +81,15 @@ router.post('/signin', [
   ),
   postSignin,
 ]);
+
+router.post(
+  '/verify',
+  // [
+  //   body('verificationCode').notEmpty(
+  //     'Please enter a code we sent you'
+  //   ),
+  // ],
+  postVerifyEmail
+);
 
 export default router;

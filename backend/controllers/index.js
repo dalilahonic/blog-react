@@ -95,15 +95,14 @@ export const getTagedArticles = async (req, res, next) => {
   }
 };
 
-const tempUsers = new Map();
-
 export const postSignup = async (req, res, next) => {
   try {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      const newError = new Error('Validation error');
-      newError.statusCode(400);
+      const newError = new Error();
+      newError.statusCode = 400;
+      newError.errors = errors.array();
       throw newError;
     }
 
@@ -114,17 +113,27 @@ export const postSignup = async (req, res, next) => {
     });
 
     if (doesUsernameExist) {
-      throw new Error(
-        'An account with this username already exists. Please sign in or use a different email.'
-      );
+      const newError = new Error();
+      newError.statusCode = 409;
+      newError.errors = [
+        {
+          msg: 'An account with this username already exists. Please sign in or use a different email.',
+        },
+      ];
+      throw newError;
     }
 
     const doesAccountExist = await User.findOne({ email });
 
     if (doesAccountExist) {
-      throw new Error(
-        'An account with this email already exists. Please sign in or use a different email.'
-      );
+      const newError = new Error();
+      newError.statusCode = 409;
+      newError.errors = [
+        {
+          msg: 'An account with this email already exists. Please sign in or use a different email.',
+        },
+      ];
+      throw newError;
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -155,22 +164,22 @@ export const postSignup = async (req, res, next) => {
       to: email,
       subject: 'Verify your email address',
       html: `
-    <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-      <div style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-        <h2 style="text-align: center; color: #4CAF50;">Verify your email address</h2>
-        <p>To finish setting up your account, we just need to make sure this email address is yours.</p>
-       
-        <p>To verify your email address use this security code: <strong>${verificationToken}</strong> </p>
-        <p>If you didn't request this code you can safely ignore this email. Someone else might have typed your email address by mistake </p>
-        <p>Thank you.</p>
+      <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+        <div style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+          <h2 style="text-align: center; color: #4CAF50;">Verify your email address</h2>
+          <p>To finish setting up your account, we just need to make sure this email address is yours.</p>
+
+          <p>To verify your email address use this security code: <strong>${verificationCode}</strong> </p>
+          <p>If you didn't request this code you can safely ignore this email. Someone else might have typed your email address by mistake </p>
+          <p>Thank you.</p>
+        </div>
       </div>
-    </div>
-  `,
+    `,
     };
 
     await transporter.sendMail(mailOptions);
 
-    res.status(200).message({
+    res.status(200).json({
       message:
         'Enter a code that has been sent to your email',
     });
@@ -186,18 +195,27 @@ export const postVerifyEmail = async (req, res, next) => {
     const userData = tempUsers.get(verificationCode);
 
     if (!userData) {
-      const newError = new Error(
-        'Invalid verification code'
-      );
+      const newError = new Error();
       newError.statusCode = 404;
+      newError.errors = [
+        {
+          msg: 'Invalid verification code',
+        },
+      ];
       throw newError;
     }
 
     if (Date.now() > userData.tokenExpiry) {
-      const newError = new Error('Code has expired');
+      const newError = new Error();
       newError.statusCode = 400;
+      newError.errors = [
+        {
+          msg: 'Code has expired.',
+        },
+      ];
       throw newError;
     }
+
     const { username, email, password } = userData;
 
     const newUser = new User({
@@ -224,6 +242,7 @@ export const postSignin = async (req, res, next) => {
   if (!errors.isEmpty()) {
     const validationError = new Error();
     validationError.statusCode = 400;
+    validationError.errors = errors;
     throw validationError;
   }
 

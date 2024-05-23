@@ -1,0 +1,11 @@
+div.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+input {
+  padding: 4px;
+  width: 200px;
+}

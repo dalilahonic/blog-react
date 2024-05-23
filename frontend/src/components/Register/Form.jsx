@@ -11,7 +11,7 @@ export default function Form() {
   const [confirmPassword, setConfirmPassword] =
     useState('');
   const [userNameInput, setUserNameInput] = useState('');
-  // const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   function handleSignup(e) {
     e.preventDefault();
@@ -28,21 +28,21 @@ export default function Form() {
         confirmPassword,
       }),
     })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Failed to fetch');
-        }
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        navigate;
+        if (!data.errors) {
+          setErrorMessage('');
+          navigate('/verify');
+        } else {
+          setErrorMessage(data.errors[0].msg);
+        }
       })
       .catch((error) => {
         console.log(error);
-        // setErrorMessage(error);
       });
   }
+
   function handleSignin(e) {
     e.preventDefault();
 
@@ -138,9 +138,9 @@ export default function Form() {
       <button>
         Sign {pathname === '/signup' ? 'up' : 'in'}
       </button>
-      {/* {errorMessage && (
+      {errorMessage && (
         <p className={styles.error}>{errorMessage}</p>
-      )} */}
+      )}
     </form>
   );
 }

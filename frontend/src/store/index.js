@@ -52,12 +52,6 @@ const usersSlice = createSlice({
     },
   },
   reducers: {
-    addData(state, action) {
-      return {
-        ...state,
-        users: action.payload,
-      };
-    },
     signIn(state) {
       localStorage.setItem('isUserLoggedIn', true);
       return {

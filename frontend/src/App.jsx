@@ -12,6 +12,7 @@ import Tags from './pages/Tags';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import Speech from './pages/Speech';
+import Verify from './components/Register/Verify';
 
 const router = createBrowserRouter([
   {
@@ -26,18 +27,10 @@ const router = createBrowserRouter([
   { path: '/signin', element: <RegisterPage /> },
   { path: '/signup', element: <RegisterPage /> },
   { path: '/:username', element: <ProfilePage /> },
+  { path: '/verify', element: <Verify /> },
 ]);
 
 function App() {
-  // const dispatch = useDispatch();
-
-  //   fetch(
-  //     'https://blog-36b42-default-rtdb.firebaseio.com/users.json'
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => dispatch(userActions.addData(data)));
-  // }, [dispatch]);
-
   return <RouterProvider router={router} />;
 }
 

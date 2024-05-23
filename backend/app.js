@@ -15,14 +15,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(routes);
 
-app.use((err, req, res) => {
-  console.log('usli smo ovde' + err);
+app.use((err, req, res, next) => {
+  console.log(err);
 
-  res.status(500).json({
-    success: false,
-    message: err.message,
-    error: err,
-  });
+  const statusCode = err.statusCode || 500;
+
+  res.status(statusCode).json(err);
 });
 
 mongoose.connect(URI).then(() => {
