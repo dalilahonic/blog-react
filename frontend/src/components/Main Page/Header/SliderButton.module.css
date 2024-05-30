@@ -1,10 +1,13 @@
 div.button {
   height: 70%;
   width: 120px;
-  background-color: var(--color-btn);
   border-radius: 220px;
-  border: 2px solid white;
   position: relative;
+}
+
+div.button.dark {
+  background-color: var(--color-btn);
+  border: 2px solid white;
 }
 
 div.button.light {
@@ -18,29 +21,49 @@ div.button:hover {
 div.button::after {
   position: absolute;
   content: '';
-  background-color: white;
-  border: 0.1rem solid grey;
   top: 50%;
-  right: 3%;
   height: 1.6rem;
   width: 1.6rem;
   border-radius: 50%;
+}
+
+div.button.dark::after {
+  right: 3%;
+  background-image: url('../../../assets/moon.svg');
+  background-color: white;
+  border: 0.1rem solid grey;
+  transform: translate(0%, -50%);
+}
+
+div.button.light::after {
+  left: 3%;
+  background: linear-gradient(
+    130deg,
+    #ffc851 0,
+    #fff0a4 45%,
+    #ffc851 45%,
+    #fcb045 100%
+  );
+  border: 0.1rem solid #ff9b04;
+  transform: translate(0%, -50%);
+}
+
+div.button.dark.animate::after {
   animation: leftToRight 0.2s forwards ease-in-out;
 }
 
-div.button.light:after {
+div.button.light.animate::after {
   animation: rightToLeft 0.2s forwards ease-in-out;
 }
 
 @keyframes rightToLeft {
   from {
     transform: translate(0%, -50%);
-
     background-image: url('../../../assets/moon.svg');
   }
 
   to {
-    transform: translate(-70%, -50%) rotate(180deg);
+    transform: translate(-10%, -50%) rotate(180deg);
     background: linear-gradient(
       130deg,
       #ffc851 0,
@@ -53,8 +76,16 @@ div.button.light:after {
 }
 
 @keyframes leftToRight {
-  0% {
-    transform: translate(-70%, -50%);
+  from {
+    transform: translate(-10%, -50%) rotate(180deg);
+    background: linear-gradient(
+      130deg,
+      #ffc851 0,
+      #fff0a4 45%,
+      #ffc851 45%,
+      #fcb045 100%
+    );
+    border: 0.1rem solid #ff9b04;
   }
 
   to {

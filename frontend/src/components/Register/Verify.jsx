@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import styles from './Verify.module.css';
 
 function Verify() {
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -18,7 +21,12 @@ function Verify() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.errors) {
+          setError(data.errors[0].msg);
+        } else {
+          setError('');
+          navigate(`/${data.username}`);
+        }
       })
       .catch((error) => console.log(error));
   }
@@ -34,6 +42,7 @@ function Verify() {
           onChange={(e) => setCode(e.target.value)}
         />
         <button type='submit'>Submit</button>
+        {error && <p className={styles.error}> {error}</p>}
       </form>
     </div>
   );

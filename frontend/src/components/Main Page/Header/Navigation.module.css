@@ -405,3 +405,20 @@ div.rightNavigation ul {
 .leftNavigation.light h4 {
   color: var(--mint);
 }
+
+/* ...................................................*/
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+  .rightNavigation.home.dark {
+    background-color: var(--main-color);
+  }
+
+  .rightNavigation.home.light {
+    background-color: white;
+  }
+
+  div.rightNavigation ul {
+    display: none;
+  }
+}

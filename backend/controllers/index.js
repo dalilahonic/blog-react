@@ -6,6 +6,7 @@ import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import TempUser from '../models/TempUser.js';
 
 dotenv.config();
 
@@ -142,12 +143,15 @@ export const postSignup = async (req, res, next) => {
       .randomBytes(3)
       .toString('hex');
 
-    tempUsers.set(verificationCode, {
+    const newTempUser = new TempUser({
       username,
       email,
       password: hashedPassword,
       tokenExpiry: Date.now() + 3600000,
+      verificationCode,
     });
+
+    await newTempUser.save();
 
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
@@ -192,7 +196,9 @@ export const postVerifyEmail = async (req, res, next) => {
   try {
     const { verificationCode } = req.body;
 
-    const userData = tempUsers.get(verificationCode);
+    const userData = await TempUser.findOne({
+      verificationCode,
+    });
 
     if (!userData) {
       const newError = new Error();
@@ -226,11 +232,9 @@ export const postVerifyEmail = async (req, res, next) => {
 
     await newUser.save();
 
-    tempUsers.delete(verificationCode);
+    await TempUser.deleteOne({ verificationCode });
 
-    res
-      .status(201)
-      .json({ message: 'User created successfully' });
+    res.status(201).json({ username });
   } catch (error) {
     next(error);
   }

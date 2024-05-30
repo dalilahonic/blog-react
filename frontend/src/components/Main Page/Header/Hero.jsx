@@ -13,7 +13,7 @@ export default function Hero() {
         className={`${styles.leftContainer} ${
           darkTheme ? styles.dark : styles.light
         }`}
-      >
+      > 
         <img src={darkTheme ? compDark : compLight} />
       </div>
       <div
@@ -24,7 +24,7 @@ export default function Hero() {
         <div className={styles.rightContent}>
           <p>👋 Hi, I&apos;m Dalila</p>
           <p>
-            I like making <span>fun </span>, interactive
+            I like making <span>fun</span>, interactive
             things with code. I also <span>talk </span> &
             <span> write </span> about those things.
           </p>

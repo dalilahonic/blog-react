@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const userSchema = mongoose.Schema({
+const tempUserSchema = mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -21,8 +21,10 @@ const userSchema = mongoose.Schema({
     minLength: 8,
     maxLength: 100,
   },
+  verificationCode: String,
+  tokenExpiry: Date,
 });
 
-const User = mongoose.model('User', userSchema);
+const TempUser = mongoose.model('TempUser', tempUserSchema);
 
-export default User;
+export default TempUser;
