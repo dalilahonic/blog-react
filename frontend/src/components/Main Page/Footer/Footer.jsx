@@ -17,8 +17,9 @@ export default function Footer() {
         <div className={styles.contactLeft}>
           <h1>I&apos;m always up for a chat</h1>
           <p>
-            Pop me an email at @dalilahonic1@gmail.com or
-            give me a shout on social media.
+            <span>Pop me an email</span> at
+            @dalilahonic1@gmail.com or give me a shout on
+            social media.
           </p>
         </div>
         <div className={styles.contactRight}>

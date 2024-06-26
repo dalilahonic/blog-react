@@ -73,3 +73,15 @@ div.links::before {
 .dark div.links::before {
   background-color: #383639;
 }
+
+@media (max-width: 1000px) {
+  div.blogCard {
+    width: 48%;
+  }
+}
+
+@media (max-width: 800px) {
+  div.blogCard {
+    width: 80%;
+  }
+}

@@ -93,3 +93,17 @@ div.card h2:hover {
     background-size: 100% 90%;
   }
 }
+
+@media (max-width: 970px) {
+  div.card {
+    flex-direction: column;
+  }
+
+  div.divider {
+    display: none;
+  }
+
+  div.content {
+    width: 98%;
+  }
+}

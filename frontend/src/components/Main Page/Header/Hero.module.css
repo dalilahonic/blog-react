@@ -131,4 +131,15 @@ div.rightContainer {
   .rightContainer p {
     font-size: 53px;
   }
+
+  div.mainContainer {
+    height: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  .rightContainer p {
+    font-size: 40px;
+    line-height: 40px;
+  }
 }

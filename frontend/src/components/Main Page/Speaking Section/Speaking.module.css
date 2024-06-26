@@ -25,3 +25,11 @@ div.light.mainSpeaking {
 .light a {
   color: #2c2a32;
 }
+
+@media (max-width: 970px) {
+  div.wrapper {
+    padding-inline: 4%;
+    padding-bottom: 50px;
+    padding-top: 30px;
+  }
+}

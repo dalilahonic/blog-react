@@ -5,6 +5,7 @@ div.speakingIntro {
 
 div.speakingText {
   width: 50%;
+  padding-right: 10px;
 }
 
 div.speakingText h2 {
@@ -73,4 +74,26 @@ div.speakingPhoto img {
   box-shadow: 0.3rem 0.3rem var(--color-dark-no-swop);
   color: var(--color-dark-no-swop);
   border: 2px solid black;
+}
+
+@media (max-width: 970px) {
+  div.speakingIntro {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  div.speakingText {
+    width: 100%;
+  }
+
+  div.speakingPhoto {
+    width: 100%;
+  }
+
+  div.speakingPhoto::before {
+    top: -6%;
+    left: 30%;
+    width: 165px;
+    height: 34px;
+  }
 }
