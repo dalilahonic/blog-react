@@ -1,0 +1,32 @@
+.bottomNavbar {
+  width: 100%;
+  height: 10%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  display: none;
+}
+
+/* ............ THEMES ................ */
+
+.bottomNavbar.dark {
+  background-color: var(--main-color);
+  border-top: 2px solid white;
+}
+
+.bottomNavbar.light {
+  background-color: white;
+  border-top: 2px solid var(--main-color);
+}
+
+/* ........... RESPONSIVE.............. */
+
+@media (max-width: 800px) {
+  .bottomNavbar {
+    display: flex;
+  }
+}

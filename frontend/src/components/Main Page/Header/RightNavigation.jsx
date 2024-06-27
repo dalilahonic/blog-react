@@ -37,8 +37,8 @@ export default function RightNavigation({ classN }) {
         >
           <li>{isUserLoggedIn ? 'profile' : 'register'}</li>
         </Link>
-        <SliderButton />
       </ul>
+      <SliderButton />
     </div>
   );
 }

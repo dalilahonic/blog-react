@@ -24,6 +24,12 @@
   font-family: 'Catamaran', sans-serif;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box !important;
+}
+
 li:hover,
 button:hover {
   cursor: pointer;
@@ -31,4 +37,11 @@ button:hover {
 
 a {
   text-decoration: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }

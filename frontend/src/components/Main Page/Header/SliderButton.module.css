@@ -1,6 +1,7 @@
 div.button {
-  height: 70%;
-  width: 120px;
+  margin-right: 7%;
+  height: 34px;
+  width: 60px;
   border-radius: 220px;
   position: relative;
 }
@@ -25,6 +26,7 @@ div.button::after {
   height: 1.6rem;
   width: 1.6rem;
   border-radius: 50%;
+  transition: transform 0.2s ease-in-out; /* Smooth transition */
 }
 
 div.button.dark::after {
@@ -58,7 +60,7 @@ div.button.light.animate::after {
 
 @keyframes rightToLeft {
   from {
-    transform: translate(0%, -50%);
+    transform: translate(0%, -50%) rotate(0deg);
     background-image: url('../../../assets/moon.svg');
   }
 
@@ -89,7 +91,7 @@ div.button.light.animate::after {
   }
 
   to {
-    transform: translate(0%, -50%) rotate(-180deg);
+    transform: translate(0%, -50%) rotate(0deg);
     background-image: url('../../../assets/moon.svg');
   }
 }
