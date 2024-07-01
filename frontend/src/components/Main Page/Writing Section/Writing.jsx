@@ -11,7 +11,10 @@ export default function Writing() {
     (state) => state.theme.darkTheme
   );
 
-  useFetch('http://localhost:3000/limitedArticles', setData);
+  useFetch(
+    'http://localhost:3000/limitedArticles',
+    setData
+  );
 
   return (
     <section>

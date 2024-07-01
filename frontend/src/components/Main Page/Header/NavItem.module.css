@@ -1,6 +1,6 @@
 div.iconContainer {
   height: 100%;
-  width: 6%;
+  width: 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +8,7 @@ div.iconContainer {
 }
 
 .iconContainer img {
-  width: 40%;
+  width: 30%;
   aspect-ratio: 1/1;
 }
 

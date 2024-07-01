@@ -423,3 +423,13 @@ div.rightNavigation ul {
     display: none;
   }
 }
+
+@media (max-width: 470px) {
+  nav div.leftNavigation {
+    width: 50%;
+  }
+
+  nav div.rightNavigation {
+    width: 50%;
+  }
+}

@@ -17,17 +17,17 @@ function BottomNavbar() {
         darkTheme ? styles.dark : styles.light
       }`}
     >
-      <NavItem title='writng' alt='writing' img={pen} />
+      <NavItem title='writng' img={pen} to='posts' />
       <NavItem
         title='speaking'
-        alt='speaking'
         img={microphone}
+        to='speaking'
       />
-      <NavItem title='workshop' alt='workshop' img={star} />
+      <NavItem title='workshop' img={star} />
       <NavItem
         title='register'
-        alt='register'
         img={flyingThing}
+        to='signin'
       />
     </div>
   );

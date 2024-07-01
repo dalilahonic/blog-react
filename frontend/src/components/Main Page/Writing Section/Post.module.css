@@ -1,21 +1,22 @@
 div.post {
-  width: 432px;
+  width: calc(31% - 40px);
   border-radius: 20px;
   position: absolute;
 }
 
 div.post:first-of-type {
-  left: 0;
+  left: 16%;
+  top: 28%;
 }
 
 div.post:nth-of-type(2) {
-  right: -5%;
-  top: 5%;
+  right: 15%;
+  top: 20%;
 }
 
 div.post:nth-of-type(3) {
-  right: 7%;
-  bottom: 0%;
+  right: 21%;
+  bottom: 28%;
 }
 
 div.post:hover {
@@ -113,7 +114,7 @@ div.postBody footer a:nth-child(2):hover::after {
 }
 
 div.dark.post {
-  border: 1px solid white;
+  border: 1.3px solid white;
   color: white;
 }
 
@@ -126,7 +127,7 @@ div.dark.post {
 }
 
 div.post.light {
-  border: 1px solid #404040;
+  border: 1.3px solid #404040;
   background-color: white;
 }
 
@@ -178,4 +179,17 @@ div.post.light {
     transparent 90%,
     transparent 100%
   );
+}
+
+/* ........................................ */
+
+@media (max-width: 800px) {
+  div.post {
+    width: 90%;
+    position: static;
+  }
+
+  div.divider span img {
+    width: 60%;
+  }
 }

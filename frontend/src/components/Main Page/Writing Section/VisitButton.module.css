@@ -1,8 +1,8 @@
 div.visitButton {
   position: absolute;
   font-size: 20px;
-  bottom: 10%;
-  left: 12%;
+  bottom: 34%;
+  left: 24%;
   width: 180px;
   height: 54px;
   display: flex;
@@ -56,4 +56,12 @@ a {
   border: 2px solid #404040;
   background-color: white;
   color: #404040;
+}
+
+/* ........................ */
+
+@media (max-width: 800px) {
+  div.visitButton {
+    position: static;
+  }
 }

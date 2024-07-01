@@ -1,16 +1,16 @@
 div.writing {
-  min-height: 100vh;
-  height: 130vh;
+  height: 998px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 div.posts {
   height: 70%;
-  width: 64%;
+  width: 70%;
   margin: auto;
-  position: relative;
+  display: flex;
 }
 
 div.posts h1 {
@@ -35,4 +35,22 @@ div.posts.dark h1 {
 
 div.posts.light h1 {
   color: #404040;
+}
+
+/* ................................... */
+
+@media (max-width: 800px) {
+  div.writing {
+    height: 1130px;
+    position: static;
+  }
+
+  div.posts {
+    align-items: center;
+    width: 80%;
+    flex-direction: column;
+    gap: 5%;
+    height: 84%;
+    width: 90%;
+  }
 }
