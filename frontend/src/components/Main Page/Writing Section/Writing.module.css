@@ -41,7 +41,8 @@ div.posts.light h1 {
 
 @media (max-width: 800px) {
   div.writing {
-    height: 1130px;
+    padding-block: 100px;
+    height: fit-content;
     position: static;
   }
 
@@ -49,7 +50,7 @@ div.posts.light h1 {
     align-items: center;
     width: 80%;
     flex-direction: column;
-    gap: 5%;
+    gap: 40px;
     height: 84%;
     width: 90%;
   }

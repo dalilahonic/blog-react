@@ -19,12 +19,17 @@ export default function Links({ from, tags }) {
                   e.stopPropagation();
                 }}
               >
-                {tag} {i == tags.length - 1 ? '' : ' |'}{' '}
+                {tag}{' '}
+                {i !== tags.length - 1 && (
+                  <span> |&nbsp;</span>
+                )}
               </Link>
             );
           })}
       </div>
-      <Link>Read post </Link>
+      <div>
+        <Link>Read post </Link>
+      </div>
     </div>
   );
 }

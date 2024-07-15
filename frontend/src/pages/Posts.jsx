@@ -6,6 +6,7 @@ import styles from './Posts.module.css';
 import { useEffect, useState } from 'react';
 import filterArticles from '../utils/filterArticles';
 import useFetch from '../utils/useFetch';
+import BottomNavbar from '../components/Main Page/Header/BottomNavbar';
 
 export default function Posts() {
   const [data, setData] = useState([]);
@@ -70,6 +71,7 @@ export default function Posts() {
           heading='Articles from elsewhere'
           data={fromElsewhere}
         />
+        <BottomNavbar />
       </div>
     </>
   );

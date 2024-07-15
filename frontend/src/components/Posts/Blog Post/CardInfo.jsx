@@ -56,7 +56,7 @@ export default function CardInfo({
       const obj = {
         heading,
         description,
-        image: image.url,
+        // image: image.url,
       };
 
       setTimeout(() => {
@@ -96,14 +96,16 @@ export default function CardInfo({
                 <SavePopup
                   heading={heading}
                   description={description}
-                  image={image}
+                  // image={image}
                   onCheckList={handleCheckList}
                   setIsSavePopupOpen={setIsSavePopupOpen}
                 />
               )}
             </>
           ))}
-        <p>{formattedDate}</p>
+        <p>
+          <time>{formattedDate}</time>
+        </p>
         <h1>{heading}</h1>
         <p>{description}</p>
       </div>

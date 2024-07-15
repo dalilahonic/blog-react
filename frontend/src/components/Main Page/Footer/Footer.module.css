@@ -29,7 +29,6 @@ div.contactLeft h1 {
 
 div.contactLeft p {
   font-size: 21px;
-  line-height: 1.8;
   line-height: 40px;
 }
 
@@ -73,4 +72,44 @@ div.footer.light {
 
 .light .contactLeft {
   color: var(--color-dark-no-swop);
+}
+
+/* ................................ */
+
+@media (max-width: 745px) {
+  div.contact {
+    flex-direction: column;
+    width: 56%;
+    height: 76%;
+    transform: translateY(-6%);
+    padding: 4%;
+  }
+  div.contactLeft {
+    width: 100%;
+    height: 50%;
+  }
+
+  div.contactRight {
+    width: 100%;
+    height: 50%;
+  }
+
+  div.contactLeft h1 {
+    font-size: 21px;
+  }
+
+  div.contactLeft p {
+    font-size: 18px;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 400px) {
+  div.contactLeft h1 {
+    font-size: 18px;
+  }
+
+  div.contactLeft p {
+    font-size: 15px;
+  }
 }
