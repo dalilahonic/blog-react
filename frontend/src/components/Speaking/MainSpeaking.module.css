@@ -13,7 +13,7 @@ div.speaking {
 div.wrapper {
   margin: auto;
   width: 90%;
-  padding-inline: 130px;
+  padding-inline: 10vh;
 }
 
 div.title {
@@ -30,4 +30,16 @@ div.title h1 {
 
 .lightt div.title {
   color: var(--color-dark-no-swop);
+}
+
+/* ............................. */
+
+@media (max-width: 800px) {
+  div.speaking {
+    padding-block: 20px;
+  }
+
+  div.wrapper {
+    padding-inline: 10px;
+  }
 }

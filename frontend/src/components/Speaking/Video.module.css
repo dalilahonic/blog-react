@@ -2,12 +2,13 @@ div.video {
   width: 60%;
   height: 56vh;
   position: relative;
+  display: flex;
+  flex-grow: 1;
 }
 
 div.video .progress {
   position: absolute;
   top: 30%;
-
   left: 45%;
   transform: translateY(200%);
 }
@@ -19,4 +20,12 @@ div.video iframe {
 
 div.video.loading iframe {
   opacity: 0;
+}
+
+/* ...................................... */
+
+@media (max-width: 800px) {
+  div.video {
+    width: 100%;
+  }
 }

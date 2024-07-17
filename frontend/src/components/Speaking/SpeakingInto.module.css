@@ -1,6 +1,7 @@
 div.speakingIntro {
   display: flex;
   gap: 20px;
+  margin-bottom: 30vh;
 }
 
 div.speakingText {
@@ -18,25 +19,24 @@ div.speakingText p {
 }
 
 div.speakingPhoto {
-  width: 60%;
+  width: 50%;
 }
 
 div.photo {
   min-width: 50%;
   max-width: 600px;
   height: 400px;
-  position: relative;
-  position: relative;
+  position: absolute;
 }
 
-div.photo::after {
-  position: absolute;
-  content: 'CSS Camp';
-  height: 20px;
-  top: -4%;
-  left: 10%;
+div.cssCamp {
+  position: relative;
+  width: fit-content;
+  top: 1.2rem;
+  z-index: 100;
+  left: 1.8rem;
   padding: 0.5rem 1.25rem;
-  font-weight: 600;
+  font-size: 18px;
 }
 
 div.photo img {
@@ -44,6 +44,8 @@ div.photo img {
   width: 100%;
   height: 100%;
 }
+
+/* ................................. */
 
 .dark div.photo {
   border: 2px solid white;
@@ -53,13 +55,13 @@ div.photo img {
   border: 2px solid var(--color-article-logo);
 }
 
-.dark div.photo::after {
-  background-color: var(--main-color);
+.dark div.cssCamp {
+  background-color: var(--color-dark);
   border: 2px solid white;
-  box-shadow: 0.5rem 0.5rem 0 0 white;
+  box-shadow: 0.3rem 0.3rem 0 0 white;
 }
 
-.light div.photo::after {
+.light div.cssCamp {
   background-color: white;
   color: var(--color-article-logo);
   border: 2px solid var(--color-dark-no-swop);
@@ -72,4 +74,18 @@ div.photo img {
 
 .ligth {
   color: var(--color-dark-no-swop);
+}
+
+/* ...................................................... */
+
+@media (max-width: 800px) {
+  div.speakingIntro {
+    flex-direction: column;
+    height: 120vh;
+  }
+
+  div.speakingText,
+  div.speakingPhoto {
+    width: 100%;
+  }
 }

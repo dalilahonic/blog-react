@@ -14,8 +14,25 @@ div.talksInner {
 div.tabs {
   width: 40%;
   height: 100%;
+  margin-right: 1.5rem;
 }
+
+/* ..................................... */
 
 .dark * {
   color: white;
+}
+
+/* ................................................ */
+
+@media (max-width: 800px) {
+  div.talksInner {
+    flex-direction: column-reverse;
+    gap: 5vh;
+  }
+
+  div.tabs {
+    width: 100%;
+    padding: 2vh;
+  }
 }

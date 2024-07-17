@@ -12,6 +12,25 @@ div.iconContainer {
   aspect-ratio: 1/1;
 }
 
+.iconContainer span {
+  position: relative;
+}
+
+.iconContainer span.active::after {
+  opacity: 1;
+  filter: invert(1);
+  position: absolute;
+  content: '';
+  bottom: -40%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1rem;
+  background-image: url('../../../assets/line-decoration.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /* ......... THEMES........... */
 
 .iconContainer.dark img {

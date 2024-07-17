@@ -29,7 +29,7 @@ export default function SpeakingIntro() {
         </p>
       </div>
       <div className={styles.speakingPhoto}>
-        <div className={styles.cssCamp}> </div>
+        <div className={styles.cssCamp}> CSS Camp </div>
         <div className={styles.photo}>
           <img src={cssCamp} />
         </div>

@@ -24,7 +24,6 @@
   font-family: 'Catamaran', sans-serif;
 }
 
-*,
 *::before,
 *::after {
   box-sizing: border-box !important;
@@ -43,5 +42,6 @@ html,
 body {
   margin: 0;
   padding: 0;
+  width: 100% !important;
   overflow-x: hidden;
 }

@@ -18,13 +18,6 @@ export default function Video({ activeTab }) {
 
   let src;
 
-  if (activeTab == 0)
-    src = 'https://www.youtube.com/embed/kvazBqAlx58';
-  else if (activeTab == 1)
-    src = 'https://www.youtube.com/embed/Ouf9-bOqJVk';
-  else if (activeTab == 2)
-    src = 'https://www.youtube.com/embed/1m6en0SQNFs';
-
   return (
     <div className={`${styles.video} ${styles[clasess]}`}>
       {isLoading && (
